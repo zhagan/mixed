@@ -1,0 +1,56 @@
+      body{
+         background-image: url('../images/');
+
+         padding: 0;
+         margin: 0;
+       }
+
+
+       .navbar .container{
+         background-color: #ffffff;
+         margin-bottom:0;
+         border-radius:0;
+         border-bottom: #777777 3px solid;
+       }
+
+
+       .navbar-default .navbar-brand{
+        background-color: #4aaaa5;
+        color:#ffffff;
+       }
+
+
+
+        .footer{
+          background-color: #666666;
+          min-height: 50px;
+
+        }
+
+        .footer p{
+          color:#cccccc;
+          padding-top: 10px;
+          text-align: center;
+        }
+
+       .control-label{
+        color:#777777;
+       }
+
+        /*@media*/
+
+      @media only screen and (max-width:768px){
+       #help{
+        padding-right: 15px;
+        padding-bottom: 15px;
+        float: right;
+        margin-top: 2%;
+          }
+      }
+
+      @media only screen and (max-width:768px){
+       .col-xs-6{
+        float: right;
+        margin-top: 2%;
+          }
+      }
