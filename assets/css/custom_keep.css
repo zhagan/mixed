@@ -35,10 +35,19 @@ body {
 }
 
 body h2{
+  font-family: 'Raleway', sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  color:#EB5342;
 }
 
 body p{
   font: 17px/2.0 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+  color: #777777;
+}
+
+form {
+  font: 15px/1.0 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
   color: #777777;
 }
 
@@ -93,7 +102,7 @@ body p{
 }
 
 .header a:active{
-	color: #eba842;
+	color:#EB5342;
 	font-weight: bold;
 }
 
@@ -114,6 +123,40 @@ body p{
   grid-template-columns: 1fr;
   grid-template-areas: "table";
   margin-bottom: 10px;
+}
+
+/* .stepOne > .table {
+  grid-area: table;
+} */
+
+.stepOne {
+  /* display: grid; */
+  /* grid-template-columns: 1fr;
+  grid-template-areas: "table"; */
+  display: block;
+  box-sizing: border-box;
+  font: 15px/1.5 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+  color: #777777;
+  border: 3px solid #b9cfcf;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+
+}
+
+.stepTwo {
+  display: block;
+  box-sizing: border-box;
+  color: #000000;
+  border: 3px solid #b9cfcf;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+
+}
+
+button {
+  margin-top: 5px;
 }
 
 .container {
@@ -150,6 +193,10 @@ body p{
 
 table {
   width: 100%;
+  table-layout:fixed;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 
