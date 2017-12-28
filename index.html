@@ -6,99 +6,124 @@
     <meta name="author" content="Michelle MJ Cowan">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <title>Collaborative Playlist</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+    <link rel="stylesheet" href="/css/master.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/normalize.css" />
-    <link rel="stylesheet" media="only screen and (color)" href="./assets/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/custom_keep.css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 
 <body>
-  <!-- <header>
-    <div class="header">
+
+  <div class="header">
+
+      <div id="logo-header">
+
+        <img src="./assets/images/mixedLogo_horiz.png" alt="logo" id="logo-header">
+      </div>
+
+
+    <div class="nav">
+      <nav>
+          <ul>
+
+            <li class="current">
+                  <a href="index.html">Your Playlist</a>
+              </li>
+              <li>
+                  <span>|</span>
+              </li>
+
+              <li class="current">
+
+                <a href="library.html"><i class="fab fa-soundcloud"></i>&nbsp;&nbsp;&nbsp;Music Library</a>
+              </li>
+          </ul>
+      </nav>
 
     </div>
-  </header> -->
 
-  <div class="aside">
-        <i class="fa fa-bars"></i>
-        <i class="fa fa-home"></i>
-        <i class="fa fa-search"></i>
-        <i class="fa fa-volume-up"></i>
-        <i class="fa fa-user"></i>
-        <i class="fa fa-spotify"></i>
-        <i class="fa fa-cog"></i>
-        <i class="fa fa-soundcloud"></i>
   </div>
 
-  <!-- Music art and playback -->
-  <div class="main__header">
-      <div class="img">
-          <img src="http://lorempixel.com/200/200/abstract" />
-      </div>
-      <section class="details">
-          <div>
-              <p>Lorem ipsum dolor sit amet</p>
-              <p class="sm--hide">Artist</p>
-              <p class="sm--hide">Comment dolor sit amet</p>
-          </div>
-          <div>
-               <i class="fa fa-play"> &nbsp;Play all</i>
-               <i class="fa fa-pause"> &nbsp;Pause to</i>
-               <i class="fa fa-ellipsis-h">&nbsp;&nbsp;More</i>
-          </div>
-      </section>
+
+  <div class="sidebar">
+    <!-- list of users -->
   </div>
+
+
+<section class="main">
 
   <!-- Details - list of songs -->
-  <div class="main__body">
-          <div>
-              <p>first song</p>
-              <p class="sm--hide">artist</p>
-              <p>comment </p>
-              <p><span>Up next</span></p>
-          </div>
-          <div>
-              <p>second song</p>
-              <p class="sm--hide">artist</p>
-              <p>comment </p>
-              <p><span>2</span></p>
-          </div>
-          <div>
-              <p>third song</p>
-              <p class="sm--hide">artist</p>
-              <p>comment </p>
-              <p><span>3</span></p>
-           </div>
-           <div>
-              <p>another song</p>
-              <p class="sm--hide">artist</p>
-              <p>comment </p>
-              <p><span>4</span></p>
-           </div>
+<div class="main_body">
+
+  <table class="table">
+
+    <tr>
+      <th>ORDER OF PLAY</th>
+      <th>SONG</th>
+      <th>ARTIST</th>
+      <th>CONTRIBUTOR</th>
+      <th>COMMENTS</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>song 1</td>
+      <td>artist</td>
+      <td>person</td>
+      <td>I love this song</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>song</td>
+      <td>artist</td>
+      <td>mr bojangles</td>
+      <td>smashing!</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>song 4 eva</td>
+      <td>artist</td>
+      <td>Jake S.</td>
+      <td>bip bop</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>sad song</td>
+      <td>artist</td>
+      <td>Johanna</td>
+      <td>bwamp</td>
+    </tr>
+  </table>
+</div>
+  <!-- Music art and playback -->
+<section class="container">
+
+  <div class="player">
+      <div class="img">
+          <img src="http://via.placeholder.com/250x250" />
       </div>
-   </main>
-
-   <footer></footer>
-</body>
-
-<footer>
-  <div class="logo-small">
-    <img src="http://lorempixel.com/50/50/abstract" alt="" class="small-hide">
-    <div>
-    <p>Current song</p>
-    <p>Artist</p>
-    </div>
+      <div class="details">
+          <div>
+              <p>Song 1</p>
+              <p class="sm--hide">Artist</p>
+              <p class="sm--hide">User name and Comment dolor sit amet</p>
+          </div>
+      </div>
   </div>
+</section>
 
-  <div class="music-controls">
-    <div>
-         <i class="fa fa-play">::before</i>
-         <i class="fa fa-pause">::before</i>
-         <i class="fa fa-ellipsis-h">::before</i>
-    </div>
+</section>
+<!-- end main section -->
 
-  </div>
-    <p>Team Awesome &copy;2017-2018</p>
-</footer>
 
+<div class="footer">
+
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 </body>
 
 </html>
