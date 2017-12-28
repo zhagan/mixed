@@ -62,8 +62,8 @@
   <div class="stepSeach">
     <div class="search-container">
       <form action="  ">
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
+      <input type="text" placeholder="Search.." name="search" id="inputST1">
+      <button type="submit" id="search"><i class="fa fa-search"></i></button>
       </form>
     </div>
 </div>
@@ -73,33 +73,17 @@
 <!-- Step 2 Pick a song -->
   <h2><i class="fa fa-chevron-right" style="color:#EB5342" aria-hidden="true"></i>&nbsp;STEP TWO:&nbsp; <span style="font-weight: bold; color:#404048">Choose a song from the library</span></h2>
 
-<div class="stepOne">
-  <table class="table">
+<div class="songSelect">
+  <table class="table" id="songTable">
+      <tr>
+            <th>Song Name</th>
+            <th>Artist/User</th>
+      </tr>
+      <tr>
+            <td>song 1 name</td>
+            <td>artist</td>
+      </tr>
 
-    <tr>
-      <td>song 1 name</td>
-      <td>artist</td>
-    </tr>
-    <tr>
-      <td>song 1 name</td>
-      <td>artistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartistartist testing word wrap</td>
-    </tr>
-    <tr>
-      <td>song 1 name</td>
-      <td>artist</td>
-    </tr>
-    <tr>
-      <td>song 1 name</td>
-      <td>artist</td>
-    </tr>
-    <tr>
-      <td>song 1 name</td>
-      <td>artist</td>
-    </tr>
-    <tr>
-      <td>song 1 name</td>
-      <td>artist</td>
-    </tr>
   </table>
 </div>
   <!-- Step 3 Add song to Playlist -->
@@ -110,13 +94,14 @@
   <form>
     <!-- Your song populates from library click selection above -->
   <label>Your song:</label>
-  <input class="w3-input w3-border w3-round" type="text">
+  <div id="yourSong"></div>
+  <!-- <input class="w3-input w3-border w3-round" type="text"> -->
   <!-- Your name populates from user login?? or typed by user -->
   <label>Your name:</label>
-  <input class="w3-input w3-border w3-round" type="text">
+  <input class="w3-input w3-border w3-round" type="text" id="nameInput">
   <label>More to say</label>
-  <input class="w3-input w3-border w3-round" type="text">
-  <button class="w3-btn w3-round-large w3-teal" type="button">Add Song!</button>
+  <input class="w3-input w3-border w3-round" type="text" id="userComment">
+  <button class="w3-btn w3-round-large w3-teal" type="button" id="addSong">Add Song!</button>
   </form>
 
 </div>

@@ -43,71 +43,11 @@ $(document).ready(function() {
 
     function addPlaylist(plName){
       //var rootRef = firebase.database().ref();
-        plNameGlobal = plName;
-        //populate plylist header title
-        $('#plTitle').html(plName);
-        var playlistRef = dbRef.child('playlists');
-        plRefGlobal = playlistRef.child(plName);
-        plRefGlobal.set({
-          name: plName,
-          songs: ""
-        });
-        plChangedListener  = plRefGlobal.child('songs');
-        //the listener for when the playlist is ammended
-        var songCounter = 0;
-        plChangedListener.on('child_added', function(snapshot) {
-
-        var scURI = snapshot.val().scURI;
-        console.log("scURI "+scURI);
-        //create soundcloud widget
-        playlist.push(addSongToPL(scURI, songCounter));
-        // identify the correct element
-        createWidgetBinds(songCounter);
-        songCounter++; //increment the song counter
-
-      });
 
     } //end add playlist
 
     function createWidgetBinds(i){
 
-      var iframeElement  = document.getElementById('songWidget'+i);
-      var scWidget = SC.Widget(iframeElement);
-      //make that ever important widget array
-      widgetArray.push(scWidget);
-      //bind listeners to widgets
-        scWidget.bind(SC.Widget.Events.READY, function() {
-             // load new widget
-             var index = i;
-             scWidget.bind(SC.Widget.Events.PLAY, function() {
-
-               widgetArray.forEach(function callback(currentValue, index, array) {
-                   //your iterator
-                  //  console.log(index);
-
-                  widgetArray[index].isPaused(function(isPaused) {
-                     if(!isPaused)currentPlayPosition=index;
-                     //console.log(currentPlayPosition);
-                  });
-               });
-
-           });
-             scWidget.bind(SC.Widget.Events.FINISH, function() {
-
-               if(currentPlayPosition<widgetArray.length-1){
-                  currentPlayPosition++;
-                  widgetArray[currentPlayPosition].play();
-
-                }else{
-                  currentPlayPosition = 0;
-                  widgetArray[currentPlayPosition].play();
-                }
-              // widgetArray[this.index+1].play();
-              //   scWidget.load("https://soundcloud.com/zack-hagan/escape-by-jesse-kolber", {
-              //    auto_play: true
-              //  });
-           });
-        });
     }
 
     //load playlists as buttons
@@ -214,7 +154,7 @@ $(document).ready(function() {
         redirect_uri: 'http://localhost:8080/callback' //this callback won't work until soundclud reregisters the app
       });
 
-    var tracksContainer = $("#tracks");
+    var tracksContainer = $("#songTable");
 
     $('#inputSet').submit(function (event) {
           event.preventDefault();
@@ -238,50 +178,56 @@ $(document).ready(function() {
     $('#inputSearch').submit(function(event){
           event.preventDefault();
           searchTerm = $('#inputST1').val().trim();
-          var genre = $('#inputST2').val().trim();
-          var artist = $('#inputST3').val().trim();
+          // var genre = $('#inputST2').val().trim();
+          // var artist = $('#inputST3').val().trim();
 
           searchSC(searchTerm, genre, artist);
 
           $('#inputST1').val('');
-          $('#inputST2').val('');
-          $('#inputST3').val('');
+          // $('#inputST2').val('');
+          // $('#inputST3').val('');
 
       });
 
     $('#search').click(function (event) {
 
           event.preventDefault();
-          tracksContainer.empty();
+          //tracksContainer.empty();
 
           searchTerm = $('#inputST1').val().trim();
-          var genre = $('#inputST2').val().trim();
-          var artist = $('#inputST3').val().trim();
+          // var genre = $('#inputST2').val().trim();
+          // var artist = $('#inputST3').val().trim();
 
-          searchSC(searchTerm, genre, artist);
+          searchSC(searchTerm);
 
           $('#inputST1').val('');
-          $('#inputST2').val('');
-          $('#inputST3').val('');
+          // $('#inputST2').val('');
+          // $('#inputST3').val('');
 
     });
 
     //seach for a term
 
-    function searchSC(sTerm, genre, artist){
-           if (sTerm == "" && genre == "" &&  artist == "") {
+    function searchSC(sTerm){
+           if (sTerm == "") {
           console.log("User cancelled the prompt.");
       } else {
           //this is where we search if the user has completed a field
         SC.get('/tracks', {
-            q: searchTerm,
-            genre: genre,
-            user: artist
+            q: searchTerm
+//             genre: genre,
+//             user: artist
           }).then(function(tracks) {
             console.log(tracks);
 
+
+        $('#songTable tr').not(':first').remove();
+
+
+
         for(var i = 0; i<tracks.length; i++){
-          //console.log("ping");
+          console.log("ping");
+
 
           var trackName =  tracks[i].title;
           var artistName = tracks[i].user.permalink;
@@ -289,32 +235,47 @@ $(document).ready(function() {
           var trackURL = tracks[i].permalink_url;
           var trackURI = tracks[i].uri;
 
-          // console.log(trackName);
+          // create row for each song
+          var songRow = '';
 
-           var trackDiv = $('<div id="trackEntry">');
-           trackDiv.attr('artistName', artistName);
-           trackDiv.attr('trackURL', trackURL);
-           trackDiv.attr('uri', trackURI);
-           trackDiv.attr('position', i);
-           trackDiv.append(`${trackName} - ${artistName}`);
-           tracksContainer.append(trackDiv);
+          songRow += '<tr data-uri="' + trackURI + '" data-url="'+trackURL+'" data-img="'+imgURL+'" data-title="'+trackName+'" data-artist="'+artistName+'"><td>' + trackName + '</td><td>' + artistName + '</td></tr>';
+          //songRow.attr('class', 'songRow');
+          $('#songTable tr').first().after(songRow);
+          //  var trackDiv = $('<div id="trackEntry">');
+          //  songRow.attr('artistName', artistName);
+          //  songRow.attr('trackURL', trackURL);
+          //  songRow.attr('uri', trackURI);
+          //  songRow.attr('position', i);
+           //songRow.append(`${trackName} - ${artistName}`);
+           //tracksContainer.append(trackDiv);
+
+
          } // end of for loop
 
         });// end of tracks search returnx
 
       } //end of search complete
 
-    }
+    }//end of seach soundcloud
 
     var trackEntry = $('#trackEntry');
     var playlistContainer = $('#playlist');
+    var songContainer = $('.songRow');
+    // songContainer.click(function() {
+    tracksContainer.on('click','tr', function(){
 
-    tracksContainer.on('click','div', function(){
-                  var artist = $(this).attr('artistName');
-                  var trackURL = $(this).attr('trackURL');
-                  var scURI =   $(this).attr('uri');
-                  addTrack(artist,trackURL,scURI);
+                  // var artist = $(this).attr('artistName');
+                  // var trackURL = $(this).attr('trackURL');
+                  var scURI = $(this).data('uri');
+                  var title = $(this).data('title');
+                  // console.log($(this).children("innerText"));
+                  var trackObj = this;
+                  $('#yourSong').append(trackObj);
+                  //addTrack(artist,trackURL,scURI);
 
         });
+
+
+
 
 });//end of on doc ready
