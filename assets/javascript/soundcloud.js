@@ -6,6 +6,7 @@
 //whenever a song ends the next sing url is loaded to the widget and starts playing...
 //and here we have a colloboratie playlist
 
+//Copyright 2018 Zack Hagan and the DUers
 
 function mixed(){
   //begin firebase connect
@@ -22,17 +23,16 @@ function mixed(){
 
     const dbRef = firebase.database().ref();
 
-//hide the library selection
+      //hide the library selection
     $('.mainLibrary').hide();
     $(".libraryShow").click( function(event){
       // console.log("library clicked");
-
-      $('.mainPlaylist').hide();
-      $('.mainLibrary').show();
-    });
+        $('.mainPlaylist').hide();
+        $('.mainLibrary').show();
+      });
     $(".playlistShow").click( function(event){
-      $('.mainLibrary').hide();
-      $('.mainPlaylist').show();
+        $('.mainLibrary').hide();
+        $('.mainPlaylist').show();
 
     });
 
@@ -210,7 +210,7 @@ function mixed(){
           event.preventDefault();
           var playlistTitle = $('#inputST').val().trim();
           if(playlistTitle != null && playlistTitle != ""){
-            //addPlaylist(playlistTitle);
+            addPlaylist(playlistTitle);
             }
           $('#inputST').val('');
 
@@ -221,7 +221,7 @@ function mixed(){
           var playlistTitle = $('#inputST').val().trim();
           // console.log(playlistTitle);
           if(playlistTitle != null && playlistTitle != ""){
-            //addPlaylist(playlistTitle);
+            addPlaylist(playlistTitle);
             // console.log("add playlist");
           }
           $('#inputST').val('');
@@ -366,10 +366,10 @@ function mixed(){
     });
 
     var player = $('<iframe>', {
-       src: 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/10502040&amp',
-       id:  'songWidget',
-       frameborder: 0,
-       scrolling: 'no',
-       width: '100%'
+         src: 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/10502040&amp',
+         id:  'songWidget',
+         frameborder: 0,
+         scrolling: 'no',
+         width: '100%'
     }).appendTo($('.main_body')).hide();
 } //end mixed function
