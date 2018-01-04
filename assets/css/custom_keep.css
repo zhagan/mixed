@@ -1,7 +1,4 @@
 
-
-
-
 /* CSS Grid */
 body > .header {
   grid-area: header;
@@ -23,12 +20,10 @@ body .main {
 
 body {
   padding: 0;
-  margin: 0;
+  margin: auto;
   display: grid;
-  font-family: Helvetica, sans-serif;
-  font-size: 0.9em;
-  grid-template-rows: 10% 1fr 10%;
-  grid-template-columns: 10% 1fr;
+  grid-template-rows: 15% 1fr 10%;
+  grid-template-columns: 15% 1fr;
   grid-template-areas: "header header"
                        "sidebar content"
                        "sidebar footer";
@@ -42,13 +37,13 @@ body h2{
 }
 
 body p{
-  font: 17px/2.0 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
-  color: #777777;
+  font: 1em/1.375em 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+  color: #404048;
 }
 
 form {
-  font: 15px/1.0 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
-  color: #777777;
+  font: 1em/1.375em 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+  color: #404048;
 }
 
 
@@ -67,7 +62,6 @@ form {
   grid-template-areas: "headerImage nav";
   /* background-color: #dce7e7; */
   border-bottom: 3px solid #b9cfcf;
-
 
 }
 .header .nav{
@@ -110,6 +104,7 @@ form {
 #logo-header {
  width: 30vh;
  margin-left: 1vh;
+ margin-bottom: .8vh;
 }
 
 
@@ -334,15 +329,44 @@ table {
 
 /* left sidebar */
 .sidebar {
-  color: rgba(255,255,255,0.8);
   background-color: #45ABA3;
   border-right: 2px solid #b9cfcf;
   border-bottom: 3px solid #b9cfcf;
+  padding: 2%;
 }
 
 /* show the icons */
 .sidebar i {
   display: block;
+}
+
+.sidebar > .chip {
+    display: block;
+    padding: 0 25px;
+    margin-top: 8px;
+    height: 50px;
+    font-size: .7em;
+    line-height: .9em;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.sidebar ul {
+  padding-top: .5%;
+  display: inline;
+  word-wrap: break-word;
+  overflow: auto;
+  text-overflow: ellipsis;
+
+}
+
+.sidebar > .chip img {
+    float: left;
+    margin: 0 5px 0 -25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
 }
 
 /* footer */
