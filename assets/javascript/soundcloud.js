@@ -1,9 +1,9 @@
 //begin test soundcloud code, no node
 //all of this happens outside of soundlcoud so no user authentication is needed
 //basically a user searchs for a song and then adds it to the playlist
-//which then creates a soundcloud wiget in a div and also saves pushes the song object to an
-//array with the playlist name to firebase and locally
-//whenever a song ends the next widget in the div/playlist is selected and starts playing...
+//which then firebase chold and also pushes the song object to an
+//array with the playlist
+//whenever a song ends the next sing url is loaded to the widget and starts playing...
 //and here we have a colloboratie playlist
 
 
@@ -36,12 +36,9 @@ function mixed(){
 
     });
 
-    //dbRef.on('value', snap => console.log("db " +snap.val()));
-
     //add playlist function probably need to check if the name exists already...
     var plNameGlobal;
     var plRefGlobal;
-    var user = "Zack";
     var plChangedListener;
     var playlist =[];
     var track = {
@@ -55,7 +52,7 @@ function mixed(){
 
 
     function addPlaylist(plName){
-      //var rootRef = firebase.database().ref();
+
       plNameGlobal = plName;
       //populate plylist header title
       $('#playlistTitle').html(plName);
@@ -109,35 +106,18 @@ function mixed(){
     var plIt = 0;
 
     dbPlRef.on('child_added', function(snapshot) {
-      // data.forEach(function (element, index){
 
-          // console.log(element.val().name);
           var playlistNames = snapshot.val().name;
-          //var playlistKey = datas
-          // console.log(plIt);
           var plDiv = $(`<div class="card" value="${plIt}">`).append(playlistNames).appendTo($('#loadPlaylist'));
           plIt++;
-      // });
-      //callback for playlist buttons
-      //var loadPLBtnArray = $('.card');
 
       //this is where we would like to load a playlist when a user clicks on the card
       // THIS IS THE CALLBACK FOR SLECTING A PLAYLIST
 
       plDiv.on('click', function(event){
         //if playlist buttom clicked load playlist
-            // console.log("click playlist");
-          //btnVal = $(this).text();
+
           plLoc = $(this).attr('value');
-          // console.log(btnVal + " btn val "+plLoc);
-          //console.log(JSON.stringify(playlistsOldStorage));
-
-
-            //element = element.toString();
-            //console.log(element[0].name);
-            //  if(snapshot.val().name === btnVal){
-              //console.log(element.val().songs);
-              //var songs = Object.values(element.val().songs);
 
               plNameGlobal = snapshot.val().name;
               playlist = [];
@@ -148,12 +128,12 @@ function mixed(){
               var playlistRef = dbRef.child('playlists');
 
               plRefGlobal = playlistRef.child(plNameGlobal);
-              // console.log(plRefGlobal);
+
               //this is what is called when a user adds a song to existing playlist
               var songCounter = 0;
               plRefGlobal.child('songs').on('child_added', function(snapshot) {
 
-              // var scURI = snapshot.val().scURI;
+
                console.log("child "+JSON.stringify(snapshot));
               // //create soundcloud widget
 
@@ -181,25 +161,7 @@ function mixed(){
 
                 });
 
-
-//                 songs.forEach(function (song, index){
-//                     // console.log(song.scURI);
-// //                     addSongToPL(song.scURI,index);
-// //
-//                     playlist.push(addSongToPL(song, index));
-//                     //createWidgetBinds(index);
-//
-//                 });
-
-
-
-              //}
-
-
-
-          //var selectedPlaylist = snapshot.val().songs;
-          // console.log(selectedPlaylist + "playlist data");
-    });
+              });
 
     });
 
@@ -217,18 +179,9 @@ function mixed(){
           var playlistRow = '';
 
           playlistRow += '<tr data-pos="'+index+'"data-uri="' + track.scURI + '" data-url="'+track.trackURL+'" data-img="'+track.imgURL+'" data-title="'+track.title+'" data-artist="'+track.artist+'"><td>' +(index+1)+ '</td><td>' + track.title + '</td><td>' + track.artist + '</td><td>' + track.addedBy + '</td><td>' + track.comment + '</td></tr>';
-          //songRow.attr('class', 'songRow');
+
           $('#currentPlaylist tr').last().after(playlistRow);
-        // playlist.push($('<iframe>', {
-        //    src: 'https://w.soundcloud.com/player/?url='+uri+'&amp',
-        //    id:  'songWidget'+i,
-        //    frameborder: 0,
-        //    scrolling: 'no',
-        //    width: '50%',
-        //    position: i
-        //   //  height: '50px'
-        //
-        // }).appendTo(playlistContainer));
+
       }
 
 
@@ -257,7 +210,7 @@ function mixed(){
           event.preventDefault();
           var playlistTitle = $('#inputST').val().trim();
           if(playlistTitle != null && playlistTitle != ""){
-            addPlaylist(playlistTitle);
+            //addPlaylist(playlistTitle);
             }
           $('#inputST').val('');
 
@@ -268,7 +221,7 @@ function mixed(){
           var playlistTitle = $('#inputST').val().trim();
           // console.log(playlistTitle);
           if(playlistTitle != null && playlistTitle != ""){
-            addPlaylist(playlistTitle);
+            //addPlaylist(playlistTitle);
             // console.log("add playlist");
           }
           $('#inputST').val('');
@@ -278,31 +231,22 @@ function mixed(){
     $('#inputSearch').submit(function(event){
           event.preventDefault();
           searchTerm = $('#inputST1').val().trim();
-          // var genre = $('#inputST2').val().trim();
-          // var artist = $('#inputST3').val().trim();
 
           searchSC(searchTerm, genre, artist);
 
           $('#inputST1').val('');
-          // $('#inputST2').val('');
-          // $('#inputST3').val('');
 
       });
 
     $('#search').click(function (event) {
 
           event.preventDefault();
-          //tracksContainer.empty();
 
           searchTerm = $('#inputST1').val().trim();
-          // var genre = $('#inputST2').val().trim();
-          // var artist = $('#inputST3').val().trim();
 
           searchSC(searchTerm);
 
           $('#inputST1').val('');
-          // $('#inputST2').val('');
-          // $('#inputST3').val('');
 
     });
 
@@ -338,16 +282,7 @@ function mixed(){
           var songRow = '';
 
           songRow += '<tr data-uri="' + trackURI + '" data-url="'+trackURL+'" data-img="'+imgURL+'" data-title="'+trackName+'" data-artist="'+artistName+'"><td>' + trackName + '</td><td>' + artistName + '</td></tr>';
-          //songRow.attr('class', 'songRow');
           $('#songTable tr').first().after(songRow);
-          //  var trackDiv = $('<div id="trackEntry">');
-          //  songRow.attr('artistName', artistName);
-          //  songRow.attr('trackURL', trackURL);
-          //  songRow.attr('uri', trackURI);
-          //  songRow.attr('position', i);
-           //songRow.append(`${trackName} - ${artistName}`);
-           //tracksContainer.append(trackDiv);
-
 
          } // end of for loop
 
@@ -363,9 +298,6 @@ function mixed(){
     // songContainer.click(function() {
     tracksContainer.on('click','tr', function(){
 
-                  // var artist = $(this).attr('artistName');
-                  // var trackURL = $(this).attr('trackURL');
-
                   var scURI = $(this).data('uri');
                   var title = $(this).data('title');
 
@@ -374,15 +306,11 @@ function mixed(){
 
                   var imgURL = $(this).data('img');
 
-                  // console.log($(this).children("innerText"));
                   var trackObj = $(this).clone();
 
                   var ySong =  $('#yourSong');
                   ySong.empty().append(trackObj);
                   ySong.attr('uri', scURI).attr('title', title).attr('imgURL', imgURL).attr('artist', artist).attr('trackURL',trackURL);
-
-
-                  //addTrack(artist,trackURL,scURI);
 
         });
 
@@ -431,9 +359,6 @@ function mixed(){
                position = 0;
              }
               widget.load(playlist[position].trackURL, {auto_play:'true'});
-              //console.log(playlist[position]);
-
-
 
          });
       });
