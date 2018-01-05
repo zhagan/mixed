@@ -1,9 +1,9 @@
-//begin test soundcloud code, no node
+//begin test soundcloud code, no node js
 //all of this happens outside of soundlcoud so no user authentication is needed
 //basically a user searchs for a song and then adds it to the playlist
-//which then firebase chold and also pushes the song object to an
+//which then firebase holds and also pushes the song object to an
 //array with the playlist
-//whenever a song ends the next sing url is loaded to the widget and starts playing...
+//whenever a song ends the next song url is loaded to the widget and starts playing...
 //and here we have a colloboratie playlist
 
 //Copyright 2018 Zack Hagan and the DUers
@@ -358,6 +358,7 @@ function mixed(){
              }else{
                position = 0;
              }
+             
               widget.load(playlist[position].trackURL, {auto_play:'true'});
 
          });
