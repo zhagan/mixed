@@ -55,7 +55,7 @@ function mixed(){
 
       plNameGlobal = plName;
       //populate plylist header title
-      $('#playlistTitle').html(plName);
+      //$('#playlistTitle').html(plName);
       $('#noPlaylist').hide();
       var playlistRef = dbRef.child('playlists');
       plRefGlobal = playlistRef.child(plName);
@@ -117,7 +117,7 @@ function mixed(){
       plDiv.on('click', function(event){
         //if playlist buttom clicked load playlist
 
-          plLoc = $(this).attr('value');
+              plLoc = $(this).attr('value');
 
               plNameGlobal = snapshot.val().name;
               playlist = [];
@@ -125,41 +125,56 @@ function mixed(){
               $('#noPlaylist').hide();
               $('#currentPlaylist tr').not(':first').empty();
               //reset where we are looking in the db
-              var playlistRef = dbRef.child('playlists');
+            //  var playlistRef = dbRef.child('playlists');
 
-              plRefGlobal = playlistRef.child(plNameGlobal);
+              plRefGlobal =  dbRef.child('playlists').child(plNameGlobal);
 
               //this is what is called when a user adds a song to existing playlist
-              var songCounter = 0;
-              plRefGlobal.child('songs').on('child_added', function(snapshot) {
 
 
-               console.log("child "+JSON.stringify(snapshot));
-              // //create soundcloud widget
 
-              var scURI = snapshot.val().scURI;
-              var artist = snapshot.val().artist;
-              var imgURL = snapshot.val().imgURL;
-              var trackURL = snapshot.val().trackURL;
-              var title = snapshot.val().title;
-              var comment = snapshot.val().comment;
-              var addedBy = snapshot.val().addedBy;
 
-              var track = {
-                  title:title,
-                  trackURL:trackURL,
-                  imgURL:imgURL,
-                  artist:artist,
-                  scURI:scURI,
-                  comment:comment,
-                  addedBy:addedBy
-              };
-              // console.log("scURI "+scURI);
+                  plRefGlobal.child('songs').once('child_removed', function(snapshot) {
+                      console.log("child removed");
+                      //plDiv.trigger('click');
+                      songCounter--;
+                      //plDiv.off();
+                  });
 
-              addSongToPL(track, songCounter);
-              songCounter++; //increment the song counter
+                  plRefGlobal.child('songs').on('value', function(snapshot) {
+                    var songCounter = 0;
+                    playlist = [];
+                    $('#currentPlaylist tr').not(':first').empty();
+                    console.log("child "+JSON.stringify(snapshot));
+                      // //create soundcloud widget
+                    snapshot.forEach( function(snapshot){
+                      var scURI = snapshot.val().scURI;
+                      var artist = snapshot.val().artist;
+                      var imgURL = snapshot.val().imgURL;
+                      var trackURL = snapshot.val().trackURL;
+                      var title = snapshot.val().title;
+                      var comment = snapshot.val().comment;
+                      var addedBy = snapshot.val().addedBy;
+                      var songDbRef = snapshot.ref.path.n[snapshot.ref.path.n.length-1];
 
-                });
+                      var track = {
+                          title:title,
+                          trackURL:trackURL,
+                          imgURL:imgURL,
+                          artist:artist,
+                          scURI:scURI,
+                          comment:comment,
+                          addedBy:addedBy,
+                          songDbRef: songDbRef
+                      };
+                      // console.log("scURI "+scURI);
+
+                      addSongToPL(track, songCounter);
+                      songCounter++; //increment the song counter
+                    });
+
+                    });
+
 
               });
 
@@ -178,7 +193,9 @@ function mixed(){
           playlist.push(track);
           var playlistRow = '';
 
-          playlistRow += '<tr data-pos="'+index+'"data-uri="' + track.scURI + '" data-url="'+track.trackURL+'" data-img="'+track.imgURL+'" data-title="'+track.title+'" data-artist="'+track.artist+'"><td>' +(index+1)+ '</td><td>' + track.title + '</td><td>' + track.artist + '</td><td>' + track.addedBy + '</td><td>' + track.comment + '</td></tr>';
+          playlistRow += '<tr ><td>'+(index+1)+ '</td><td>' + track.title + '</td><td>' + track.artist + '</td><td>' + track.addedBy
+          + '</td><td>' + track.comment + '</td><td>' + '<div><button type="submit" id="deleteSong" data-dbref="'+track.songDbRef+'"><i class="fa fa-trash"></i></button><button id="playSong" data-pos="'+index+'"data-uri="' + track.scURI + '" data-url="'+track.trackURL
+          +'" data-img="'+track.imgURL+'" data-title="'+track.title+'" data-artist="'+track.artist+'"><i class="fa fa-play"></i></button></div>'+ '</td></tr>';
 
           $('#currentPlaylist tr').last().after(playlistRow);
 
@@ -334,9 +351,18 @@ function mixed(){
 
     });
 
-    //when a song in the playlist is clicked
-    $('#currentPlaylist').on('click','tr', function(event){
+    $('#currentPlaylist').on('click', '#deleteSong', function(event){
+      console.log("delete");
+      var songDbRef = $(this).data('dbref');
+      plRefGlobal.child('songs').child(songDbRef).remove();
 
+
+
+    });
+
+    //when a song in the playlist is clicked
+    $('#currentPlaylist').on('click', '#playSong', function(event){
+    //$('#playSong').click( function(event){
       var url = $(this).data('url');
       var position = $(this).data('pos');
       console.log("playlist clicked "+position);
@@ -358,7 +384,7 @@ function mixed(){
              }else{
                position = 0;
              }
-             
+
               widget.load(playlist[position].trackURL, {auto_play:'true'});
 
          });
