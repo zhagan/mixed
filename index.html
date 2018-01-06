@@ -20,11 +20,9 @@
 </head>
 
 <body onload="mixed()">
-
+<!-- HEADER: LOGO AND NAV BAR -->
   <div class="header">
-
       <div id="logo-header">
-
         <img src="./assets/images/mixedLogo_horiz.png" alt="logo" id="logo-header">
       </div>
 
@@ -60,13 +58,8 @@
 
   <section class="aboutSection">
     <div id="about">
-
-
-      <h6><i class="fa fa-ellipsis-v" aria-hidden="true"></i>&nbsp;&nbsp;MIXED lets your group build a playlist together... the music plays in the order your friends add songs to the list!&nbsp;&nbsp;<i class="fa fa-ellipsis-v" aria-hidden="true"></i></h6>
-
-
+      <h6>My <span style="color:#EB5342;">Mixed</span> Tape: Collaborate with Friends to make a Playlist!</h6>
     </div>
-
   </section>
 <!-- END header -->
 
@@ -109,71 +102,81 @@
 <section class="main">
 
 
-  <!-- Section 1 - Details - list of songs -->
+  <!-- Flow area 1a: left column of section: Playlist Available and Create New Playlist -->
 <section class="sectionOne" id="one">
 
-
+<!-- BEGIN "WHAT'S PLAYING AREA"-->
 <div class="main_body">
-  <h3 id="playlistTitle"><span>1</span>
-  Current Playlist
+  <!-- =============================================== -->
+  <!-- HEADLINE for Available Playlists cards-->
+<div class="playlistCards">
+    <img src="./assets/images/Step-1.png" alt="Step 1">
+    <h3>Select a Playlist</h3>
 
-  </h3>
+    <!-- ZACK WHAT IS THIS>>>>> -->
+    <div id="playlistTitle">
+    </div>
 
+  <!-- =============================================== -->
+  <!-- left column: "Available Playlists" cards-->
 
-  <table class="table" id="currentPlaylist"><!-- not responsive, need to fix if possible -->
+  <!-- grid of playlist cards - inside a grid -->
+  <div id="loadPlaylist">
 
-    <tr>
-      <th></th>
-      <th>SONG</th>
-      <th>ARTIST</th>
-      <th>CONTRIBUTOR</th>
-      <th>COMMENTS</th>
-    </tr>
-
-  </table>
-  <h4 id="noPlaylist">No Playlist Selected</h4>
+        <!-- PLAYLIST CARDS display area -->
+  </div>
 
 </div>
-  <!-- Music art and playback -->
+      <!-- ZACK: why h4 thing not hidden?<h4 id="noPlaylist">No Playlist Selected</h4> -->
+<!--
+ =============================================== -->
+<!-- Flow area 1b: right column of section: CREATE A NEW PLAYLIST FORM-->
+  <section id="sectionThree">
+    <div class="playlist_section" id="createPlaylist">
+      <form id="inputSet">
+        <img src="./assets/images/or.png" alt="Or">
+        <h3>Create New Playlist
+        </h3>
+        <input class="w3-input w3-border w3-round" type="text" id="inputST">
+        <button class="w3-btn w3-round-large w3-teal" type="button" id="createSet">Add Playlist!</button>
+      </form>
+    </div>
+  </div>
+  <!-- END main-body -->
+  <!-- =============================================== -->
+
+  <!-- BEGIN SELECT SONG AREA -->
+  <div class="currentMusicList">
+
+      <table class="table" id="currentPlaylist">
+
+        <tr>
+          <th></th>
+          <th>SONG</th>
+          <th>ARTIST</th>
+          <th>CONTRIBUTOR</th>
+          <th>COMMENTS</th>
+          <th></th>
+        </tr>
+
+      </table>
+    <!-- #noPlaylist line 59 & 125 -->
+    <div class="playlist_section">
+          <!-- ZACK CREATE??<p>Playlists Available:
+          </p> -->
+    </div>
+
+  </div>
+
+
+
+<!-- =================================================== -->
+
+
+<!-- Music art and playback -->
 
 <section class="container">
 
-
-  <!-- <div class="stage">
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/sports" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/people" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/fashion" alt="Alt" /></div>
-    <div class="cbImage active"><img src="http://lorempixel.com/200/268/abstract" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/city" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/nightlife" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/cats" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/nature" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/food" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/transports" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/technics" alt="Alt" /></div>
-    <div class="clear"></div>
-  </div>
-
-  <div class="controls">
-    <div class="cbcontrol" id="cbControlRight"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-    <div class="cbcontrol" id="cbControlLeft"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
-    <div class="clear"></div>
-  </div> -->
-
-<!-- PLACEHOLDER SECTION: -->
-  <!-- <div class="player">
-      <div class="img">
-          <img src="http://via.placeholder.com/250x250" />
-      </div>
-      <div class="details">
-          <div>
-              <p>Song 1</p>
-              <p class="">Artist</p>
-              <p class="">User name and Comment dolor sit amet</p> -->
-          <!-- </div>
-      </div>
-  </div>
-</section> -->
 
 </section>
 <!-- end section 1 -->
@@ -202,7 +205,7 @@
 
   </div>
 
-<!-- Step 2 Pick a song -->
+<!-- Step 1 Pick a song -->
   <h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;Choose a song from the library</h4>
 
 <div class="stepOne">
@@ -216,7 +219,7 @@
 
   </table>
 </div>
-  <!-- Step 3 Add song to Playlist -->
+  <!-- Step 2 Add song to Playlist -->
 <h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;Add your song!</h4>
 
 <div class="stepTwo">
@@ -245,40 +248,7 @@
 
 <!-- Section 3 Playlist array page -->
 
-  <section id="sectionThree">
-    <div id="createPlaylist">
-      <form id="inputSet">
-        <h3 style="color: #ffffff;">
-        Create New Playlist
-        </h3>
-        <input class="w3-input w3-border w3-round" type="text" id="inputST">
-        <button class="w3-btn w3-round-large w3-teal" type="button" id="createSet">Add Playlist!</button>
-      </form>
-    </div>
-    <div class="playlist_section">
 
-
-
-
-      <h3 style="color: #ffffff;"><span>3</span>
-      Playlists Available:
-      </h3>
-
-    <!-- grid of playlist cards - inside a grid -->
-      <div class="playlistGrid" id="loadPlaylist">
-
-        <!-- <div class="card">
-          <img src="./assets/images/subtle_dots.png" alt="music image">
-          <div class="cardContainer">
-            <h4><b>Playlist Mumbo</b></h4>
-            <p>Dec 12 2017</p>
-          </div>
-        </div> -->
-
-
-
-      </div>
-  </div>
     <!-- Music art and playback -->
     <section class="container">
 
