@@ -20,11 +20,9 @@
 </head>
 
 <body onload="mixed()">
-
+<!-- HEADER: LOGO AND NAV BAR -->
   <div class="header">
-
       <div id="logo-header">
-
         <img src="./assets/images/mixedLogo_horiz.png" alt="logo" id="logo-header">
       </div>
 
@@ -42,14 +40,14 @@
 
                 <li class="current">
 
-                  <a href="#two"><i class="fab fa-soundcloud"></i>&nbsp;&nbsp;&nbsp;Select Song</a>
+                  <a href="#two" id="selectSongShow"><i class="fab fa-soundcloud"></i>&nbsp;&nbsp;&nbsp;Select Song</a>
                 </li>
                 <li>
                     <span>|</span>
                 </li>
                 <li class="current">
 
-                  <a href="#sectionThree"><i class="fab fa-soundcloud"></i>&nbsp;&nbsp;&nbsp;Playlist Library</a>
+                  <a href="#sectionThree" id="playlistShow"><i class="fab fa-soundcloud" ></i>&nbsp;&nbsp;&nbsp;Playlist Library</a>
                 </li>
             </ul>
         </nav>
@@ -60,13 +58,8 @@
 
   <section class="aboutSection">
     <div id="about">
-
-
-      <h6><i class="fa fa-ellipsis-v" aria-hidden="true"></i>&nbsp;&nbsp;MIXED lets your group build a playlist together... the music plays in the order your friends add songs to the list!&nbsp;&nbsp;<i class="fa fa-ellipsis-v" aria-hidden="true"></i></h6>
-
-
+      <h6>My <span style="color:#EB5342;">Mixed</span> Tape: Collaborate with Friends to make a Playlist!</h6>
     </div>
-
   </section>
 <!-- END header -->
 
@@ -109,176 +102,143 @@
 <section class="main">
 
 
-  <!-- Section 1 - Details - list of songs -->
+  <!-- Flow area 1a: left column of section: Playlist Available and Create New Playlist -->
 <section class="sectionOne" id="one">
 
-
+<!-- BEGIN "WHAT'S PLAYING AREA"-->
 <div class="main_body">
-  <h3 id="playlistTitle"><span>1</span>
-  Current Playlist
-
-  </h3>
-
-
-  <table class="table" id="currentPlaylist"><!-- not responsive, need to fix if possible -->
-
-    <tr>
-      <th></th>
-      <th>SONG</th>
-      <th>ARTIST</th>
-      <th>CONTRIBUTOR</th>
-      <th>COMMENTS</th>
-    </tr>
-
-  </table>
-  <h4 id="noPlaylist">No Playlist Selected</h4>
-
-</div>
-  <!-- Music art and playback -->
-
-<section class="container">
-
-
-  <!-- <div class="stage">
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/sports" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/people" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/fashion" alt="Alt" /></div>
-    <div class="cbImage active"><img src="http://lorempixel.com/200/268/abstract" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/city" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/nightlife" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/cats" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/nature" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/food" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/transports" alt="Alt" /></div>
-    <div class="cbImage"><img src="http://lorempixel.com/200/268/technics" alt="Alt" /></div>
-    <div class="clear"></div>
-  </div>
-
-  <div class="controls">
-    <div class="cbcontrol" id="cbControlRight"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-    <div class="cbcontrol" id="cbControlLeft"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
-    <div class="clear"></div>
-  </div> -->
-
-<!-- PLACEHOLDER SECTION: -->
-  <!-- <div class="player">
-      <div class="img">
-          <img src="http://via.placeholder.com/250x250" />
+  <!-- =============================================== -->
+  <!-- HEADLINE for Available Playlists cards-->
+<div class="playlistCards">
+    <div class="leftColumn">
+      <img src="./assets/images/Step-1.png" alt="Step 1">
+      <h3>Select a Playlist</h3>
+      <div id="loadPlaylist">
+            <!-- PLAYLIST CARDS display area -->
       </div>
-      <div class="details">
-          <div>
-              <p>Song 1</p>
-              <p class="">Artist</p>
-              <p class="">User name and Comment dolor sit amet</p> -->
-          <!-- </div>
-      </div>
-  </div>
-</section> -->
-
-</section>
-<!-- end section 1 -->
-
-<!-- Section 2 -->
-<section class="sectionTwo" id="two">
-<div class="main_library">
-  <h3 style="color: #ffffff;"><span>2</span>
-  Add your own song to the Playlist!
-  </h3>
-<!-- insert Library page-->
-  <div class="libary">
-
-
-<!-- Step 1 Pick a song -->
-  <h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;Find a song</h4>
-
-  <div class="stepSeach">
-    <div class="search-container">
-      <form action="  ">
-      <input type="text" placeholder="Search.." name="search" id="inputST1">
-      <button type="submit" id="search"><i class="fa fa-search"></i></button>
-      </form>
     </div>
-  </div>
 
-  </div>
+    <!-- ZACK can you move this to Select Song Area line 150? Span tag-->
+    <!-- <div id="playlistTitle">
+    </div> -->
 
-<!-- Step 2 Pick a song -->
-  <h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;Choose a song from the library</h4>
 
-<div class="stepOne">
-
-  <table id="songTable">
-  <!-- to make cells clickable, need <a>. Can tie hover,click event in jquery -->
-  <tr>
-        <th>Song Name</th>
-        <th>Artist/User</th>
-  </tr>
-
-  </table>
-</div>
-  <!-- Step 3 Add song to Playlist -->
-<h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;Add your song!</h4>
-
-<div class="stepTwo">
-
-<form id="addSongForm">
-    <!-- Your song populates from library click selection above -->
-    <label>Your song:</label>
-    <div id="yourSong"></div>
-    <!-- <input class="w3-input w3-border w3-round" type="text"> -->
-    <!-- Your name populates from user login?? or typed by user -->
-    <label>Your name:</label>
-    <input class="w3-input w3-border w3-round" type="text" id="nameInput">
-    <label>More to say</label>
-    <input class="w3-input w3-border w3-round" type="text" id="userComment">
-    <button class="w3-btn w3-round-large w3-teal" type="button" id="addSong">Add Song!</button>
-
-</form>
+  <!-- left column: "Available Playlists" cards-->
 
 </div>
+      <!-- ZACK: h4 thing not hidden?:
+      <h4 id="noPlaylist">No Playlist Selected</h4> -->
+<!--
+ =============================================== -->
+<!-- Flow area 1b: right column of section: CREATE A NEW PLAYLIST FORM-->
 
-</div>
-<!-- end Library class div -->
-</div>
-</section>
-<!-- end Section 2 -->
-
-<!-- Section 3 Playlist array page -->
-
-  <section id="sectionThree">
-    <div id="createPlaylist">
+  <div class="playlist_section" id="createPlaylist">
       <form id="inputSet">
-        <h3 style="color: #ffffff;">
-        Create New Playlist
-        </h3>
+        <img src="./assets/images/or.png" alt="Or">
+        <h3>Create New Playlist</h3>
         <input class="w3-input w3-border w3-round" type="text" id="inputST">
         <button class="w3-btn w3-round-large w3-teal" type="button" id="createSet">Add Playlist!</button>
       </form>
     </div>
-    <div class="playlist_section">
-
-
-
-
-      <h3 style="color: #ffffff;"><span>3</span>
-      Playlists Available:
-      </h3>
-
-    <!-- grid of playlist cards - inside a grid -->
-      <div class="playlistGrid" id="loadPlaylist">
-
-        <!-- <div class="card">
-          <img src="./assets/images/subtle_dots.png" alt="music image">
-          <div class="cardContainer">
-            <h4><b>Playlist Mumbo</b></h4>
-            <p>Dec 12 2017</p>
-          </div>
-        </div> -->
-
-
-
-      </div>
   </div>
+  <!-- END main-body -->
+<!-- =============================================== -->
+<!-- BEGIN SELECT SONG AREA -->
+<section class="songArea">
+  <div class="currentMusicList">
+
+      <h3>My MIXED Playlist:&nbsp;<span id="playlistTitle"></span></h3>
+      <table class="table" id="currentPlaylist">
+
+        <tr>
+          <th></th>
+          <th>SONG</th>
+          <th>ARTIST</th>
+          <th>CONTRIBUTOR</th>
+          <th>COMMENTS</th>
+          <th></th>
+        </tr>
+
+      </table>
+    <!-- #noPlaylist line 59 & 125 -->
+    <div class="playlist_section">
+          <!-- ZACK CREATE??<p>Playlists Available:
+          </p> -->
+    </div>
+
+  </div>
+</section>
+<!-- =================================================== -->
+<section class="selectSongArea">
+  <div class="main_library">
+
+
+    <!-- insert Library page-->
+
+      <div id="headline">
+        <img src="./assets/images/Step-2.png" alt="Step 2">
+        <h3>Add your own song to the Playlist!</h3>
+      </div>
+
+    <!-- Step 1 Pick a song -->
+    <div class="library">
+
+      <div class="stepSeach">
+        <div class="search-container">
+          <form action="  ">
+          <input type="text" placeholder="Search.." name="search" id="inputST1">
+          <button type="submit" id="search"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+        <!-- Step 1 Pick a song -->
+
+        <div class="stepOne">
+
+          <table id="songTable">
+          <!-- to make cells clickable, need <a>. Can tie hover,click event in jquery -->
+          <tr>
+                <th>Song Name</th>
+                <th>Artist/User</th>
+          </tr>
+
+          </table>
+        </div>
+      </div>
+
+
+  </div>
+</section>
+    <div  class="selectAddArea" id="stepTwoContainer">
+
+      <!-- Step 2 Add song to Playlist -->
+    <h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;Add your song!</h4>
+
+    <div class="stepTwo">
+
+      <form id="addSongForm">
+          <!-- Your song populates from library click selection above -->
+          <label>Your song:</label>
+          <div id="yourSong"></div>
+          <!-- <input class="w3-input w3-border w3-round" type="text"> -->
+          <!-- Your name populates from user login?? or typed by user -->
+          <label>Your name:</label>
+          <input class="w3-input w3-border w3-round" type="text" id="nameInput">
+          <label>More to say</label>
+          <input class="w3-input w3-border w3-round" type="text" id="userComment">
+          <button class="w3-btn w3-round-large w3-teal" type="button" id="addSong">Add Song!</button>
+
+      </form>
+
+    </div>
+
+
+</div>
+  <!-- end Library class div -->
+</div>
+
+<!-- Section 3 Playlist array page -->
+
+
     <!-- Music art and playback -->
     <section class="container">
 
@@ -286,8 +246,7 @@
     </section>
 
 
-  </section>
-  <!-- end section 3 -->
+
 
 </section><!-- end main section -->
 

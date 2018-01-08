@@ -123,6 +123,7 @@ function mixed(){
               playlist = [];
               $('#playlistTitle').text(plNameGlobal);
               $('#noPlaylist').hide();
+              $('.main_body').hide();
               $('#currentPlaylist tr').not(':first').empty();
               //reset where we are looking in the db
             //  var playlistRef = dbRef.child('playlists');
@@ -315,6 +316,7 @@ function mixed(){
     // songContainer.click(function() {
     tracksContainer.on('click','tr', function(){
 
+                  $('.main_library').hide();
                   var scURI = $(this).data('uri');
                   var title = $(this).data('title');
 
@@ -348,7 +350,7 @@ function mixed(){
         //console.log($('#yourSong'));
         addTrack(artist, trackURL, scURI, comment, addByUser, imgURL, title);
 
-
+        $('.main_library').show();
     });
 
     $('#currentPlaylist').on('click', '#deleteSong', function(event){
@@ -378,6 +380,10 @@ function mixed(){
 
 
          });
+         widget.bind(SC.Widget.Events.PAUSE, function() {
+           player.hide();
+
+       });
            widget.bind(SC.Widget.Events.FINISH, function() {
              if(position<playlist.length-1){
                position++;
@@ -397,6 +403,17 @@ function mixed(){
          id:  'songWidget',
          frameborder: 0,
          scrolling: 'no',
-         width: '100%'
-    }).appendTo($('.main_body')).hide();
+         width: '100%',
+         id: 'player'
+    }).appendTo($('.main')).hide();
+
+    $('#playlistShow').click(function(event){
+
+      $('.main_body').show();
+    });
+
+    $('#selectSongShow').click(function(event){
+
+      $('.main_library').show();
+    });
 } //end mixed function
