@@ -25,6 +25,8 @@ function mixed(){
 
       //hide the library selection
     $('.mainLibrary').hide();
+    $('.selectSongArea').hide(); //hide select and search song area
+    $('.selectAddArea').hide();
     $(".libraryShow").click( function(event){
       // console.log("library clicked");
         $('.mainPlaylist').hide();
@@ -122,8 +124,10 @@ function mixed(){
               plNameGlobal = snapshot.val().name;
               playlist = [];
               $('#playlistTitle').text(plNameGlobal);
-              $('#noPlaylist').hide();
+              $('#noPlaylist').hide();//hide playlist
               $('.main_body').hide();
+              $('.selectSongArea').show(); //show select and search song area
+              $('.selectAddArea').show();
               $('#currentPlaylist tr').not(':first').empty();
               //reset where we are looking in the db
             //  var playlistRef = dbRef.child('playlists');
