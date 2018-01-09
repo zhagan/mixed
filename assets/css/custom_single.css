@@ -58,6 +58,15 @@ body h1 {
 
 }
 
+body h1 {
+  font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  color:#000000;
+  margin-top: 40px;
+
+}
+
 body p{
   font: 1em/1.375em 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
   color: #404048;
