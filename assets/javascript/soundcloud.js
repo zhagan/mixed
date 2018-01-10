@@ -26,7 +26,7 @@ function mixed(){
     //hide main sections until user logs in
     $('.mainSection').hide();
     //run the login function
-    login();
+    //login();
 
       //hide the library selection
     $('.mainLibrary').hide();
@@ -73,39 +73,9 @@ function mixed(){
       plChangedListener  = plRefGlobal.child('songs');
       //the listener for when the playlist is ammended
       var songCounter = 0;
-    //   plChangedListener.on('child_added', function(snapshot) {
-    //
-    //   var scURI = snapshot.val().scURI;
-    //   var artist = snapshot.val().artist;
-    //   var imgURL = snapshot.val().imgURL;
-    //   var trackURL = snapshot.val().trackURL;
-    //   var title = snapshot.val().title;
-    //   var comment = snapshot.val().comment;
-    //   var addedBy = snapshot.val().addedBy;
-    //
-    //   var track = {
-    //       title:title,
-    //       trackURL:trackURL,
-    //       imgURL:imgURL,
-    //       artist:artist,
-    //       scURI:scURI,
-    //       comment:comment,
-    //       addedBy:addedBy
-    //   };
-    //   // console.log("scURI "+scURI);
-    //   //create soundcloud widget
-    //  addSongToPL(track, songCounter);
-    //   // identify the correct element
-    //   //createWidgetBinds(songCounter);
-    //   songCounter++; //increment the song counter
-    //
-    // });
 
     } //end add playlist
 
-    function createWidgetBinds(i){
-
-    }
 
     //load playlists as cards divs
     var playlistsOldStorage;
@@ -428,106 +398,3 @@ function mixed(){
 
 
 } //end mixed function
-
-//begin login section
-var aUser = {
-    name:"",
-    imgURL:""
-};
-
-var activeUsers = [];
-var userDbRef;
-
-function login(){
-
-
-  $('#loginbtn').click(function(event){
-
-  loginWithGoogle();
-
-  });
-
-  $('#logout').click(function(event){
-    firebase.auth().signOut().then(function() {
-    // Sign-out successful.
-      console.log("user logged out");
-      loggedIn = false;
-      dbRefUser.remove();
-      }).catch(function(error) {
-        // An error happened.
-      });
-
-  })
-
-
-  function loginWithGoogle() {
-       var provider = new firebase.auth.GoogleAuthProvider();
-       firebase.auth().signInWithPopup( provider ).then( function( result ) {
-           //onLoggedState(result.user);
-          var user = result.user;
-
-             } ).catch( function( error ) {
-                 console.log('ERROR', error);
-                 // Handle Errors here.
-                 var errorCode = error.code;
-                 var errorMessage = error.message;
-                 // The email of the user's account used.
-                 var email = error.email;
-                 // The firebase.auth.AuthCredential type that was used.
-                 var credential = error.credential;
-                 // ...
-             } );
-      }
-  loggedIn = false;
-  firebase.auth().onAuthStateChanged(user => {
-          if(user) {
-            console.log("user added "+JSON.stringify(user));
-
-            console.log(user.displayName);
-            console.log(user.photoURL);
-          //  console.log(user.ref());
-
-            aUser.name = user.displayName;
-            aUser.imgURL = user.photoURL;
-
-            if(!loggedIn){
-            pushActiveUser(aUser);
-            loggedIn = true;
-            }
-            dbRef.on('value', function(data){
-
-              console.log("activeuserschanged");
-              $('#main').empty();
-              data.forEach( function(snapshot){
-                  snapshot.forEach( function(snapshot){
-                var userImg = $('<img src="'+snapshot.val().imgURL+'" />');
-                var userDiv = $('<div>').append(userImg).append(snapshot.val().name);
-
-                $('#main').append(userDiv);
-                });
-              });
-            });
-            //window.location = 'http://google.com'; //After successful login, user will be redirected to home.html
-          }
-    });
-
-  const dbRef = firebase.database().ref();
-  const dbRefActiveUsers = dbRef.child("activeUsers");
-  var dbRefUser = "";
-  function pushActiveUser (user) {
-
-      dbRefUser= dbRefActiveUsers.push();
-      dbRefUser.set({
-        name:user.name,
-        imgURL:user.imgURL
-      });
-
-  }
-
-}
-
-window.onbeforeunload = function(){
- // Do something
- $('#logout').trigger('click');
- console.log("log out");
-}
