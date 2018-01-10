@@ -390,7 +390,7 @@ function mixed(){
 
          });
          widget.bind(SC.Widget.Events.PAUSE, function() {
-           player.hide();
+           // player.hide();
 
        });
            widget.bind(SC.Widget.Events.FINISH, function() {
