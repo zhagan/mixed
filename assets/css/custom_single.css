@@ -209,7 +209,89 @@ nav a:active{
   margin: 0 20px;
 }
 
+/* left side playlist area =============================== */
 .playlistCards{
+  grid-area: playlistCards;
+  background-color: #c0dfd9;
+}
+.leftColumn h3 {
+    grid-area: headline;
+}
+.leftColumn img{
+  grid-area: headline;
+}
+.flex {
+  grid-area: playlist;
+}
+.leftColumn {
+  background-color: #c0dfd9;
+  border-right: .5px solid #ffffff;
+  display: grid;
+  grid-template-rows: 2% 1fr;
+  grid-template-areas: "headline"
+                       "playlist";
+}
+.leftColumnHeader h3 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size:1.75em;
+    margin:13px 0 0 0;
+  color: #404048;
+    }
+/* .leftColumnHeader img {
+  width: 40%;
+  height: auto;
+  margin-top: 15px;
+  vertical-align: middle;
+} */
+.leftColumnHeader {
+  display: flex;
+  align-content: flex-start;
+}
+/* loadPlaylist children*/
+#loadPlaylist {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 15px;
+  padding: 2%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-width: 90%;
+  margin-top: 10px;
+}
+.card {
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 30%;
+  padding: 3px 1px;
+  margin-bottom: 3px;
+  margin-right: 3px;
+  border-radius: 5px;
+  border: .5px solid #404048;
+  background-color: #d3d3d3;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+.card:hover {
+  font-weight: bold;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+span.circleFont {
+  font-family: 'Source Sans Pro', sans-serif;
+    font-size:1.25em;
+  line-height:30px;
+  display:inline-block;
+  border-radius: 50%;
+  border-color: #EB5342;
+  color: #EB5342;
+  border-width: 2px;
+  border-style: solid;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+}
+/* ============================================== */
+/*.playlistCards{
   padding: 15px;
   border-right: .5px solid #f2f2f2;
   display:  table;
@@ -241,10 +323,10 @@ nav a:active{
   margin-top: 10px;
   float: left;
   max-width: 90%;
-}
+}*/
 /* loadPlaylist children should be  */
 
-.card {
+/*.card {
   font-family: 'Source Sans Pro', sans-serif;
   width: 100%;
   padding: 3px 1px;
@@ -264,11 +346,11 @@ nav a:active{
   width: 80px;
 } */
 
-.card:hover {
+/*.card:hover {
   font-weight: bold;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
   transition: 0.3s;
-}
+}*/
 /* ============================================== */
 
 
