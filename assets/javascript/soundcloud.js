@@ -56,6 +56,7 @@ function mixed(){
     var searchTerm;
     var widgetArray = [];
     var currentPlayPosition;
+    var plGlobalLocation = "";
 
 
     function addPlaylist(plName){
@@ -68,6 +69,7 @@ function mixed(){
       plRefGlobal = playlistRef.child(plName);
       plRefGlobal.set({
         name: plName,
+        location: plGlobalLocation,
         songs: ""
       });
       plChangedListener  = plRefGlobal.child('songs');
@@ -85,7 +87,11 @@ function mixed(){
     dbPlRef.on('child_added', function(snapshot) {
 
           var playlistNames = snapshot.val().name;
-          var plDiv = $(`<div class="card" value="${plIt}">`).append(playlistNames).appendTo($('#loadPlaylist'));
+          var plLocSpan = $('<span id="locationSpan">');
+
+          var playlistLocation = " - " + snapshot.val().location
+          plLocSpan.append(playlistLocation)
+          var plDiv = $(`<div class="card" value="${plIt}">`).append(playlistNames).append(plLocSpan).appendTo($('#loadPlaylist'));
           plIt++;
 
       //this is where we would like to load a playlist when a user clicks on the card
@@ -306,7 +312,7 @@ function mixed(){
 
                   var trackObj = $(this).clone();
 
-                  var ySong =  $('#yourSong');
+                  var ySong =  $('#yourSong').attr("id","selectedSong");
                   ySong.empty().append(trackObj);
                   ySong.attr('uri', scURI).attr('title', title).attr('imgURL', imgURL).attr('artist', artist).attr('trackURL',trackURL);
 
@@ -360,7 +366,7 @@ function mixed(){
 
          });
          widget.bind(SC.Widget.Events.PAUSE, function() {
-           player.hide();
+           // player.hide();
 
        });
            widget.bind(SC.Widget.Events.FINISH, function() {
@@ -396,5 +402,54 @@ function mixed(){
       $('.main_library').show();
     });
 
+     // geolocation info
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var address = getAddress(position.coords.latitude, position.coords.longitude);
+      //  console.log(address);
 
+<<<<<<< HEAD
+=======
+        address.then(function(value) {
+            console.log(value.city);
+            console.log(value.state);
+            plGlobalLocation = value.city + ", " + value.state;
+            // expected output: "Success!"
+          });
+
+        // console.log(address._result.formatted_address);
+      });
+
+        function getAddress (latitude, longitude) {
+        return new Promise(function (resolve, reject) {
+            var request = new XMLHttpRequest();
+
+            var method = 'GET';
+            var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true';
+            var async = true;
+
+            request.open(method, url, async);
+            request.onreadystatechange = function () {
+                if (request.readyState == 4) {
+                    if (request.status == 200) {
+                        var data = JSON.parse(request.responseText);
+                        var address = data.results[0];
+                      //  resolve(address);
+                        console.log(address);
+                        var city = address.address_components[4].short_name;
+                        var state = address.address_components[6].short_name;
+                        plLocation = {
+                          city:city,
+                          state:state
+                        };
+                        resolve(plLocation);
+                    }
+                    else {
+                        reject(request.status);
+                    }
+                }
+            };
+            request.send();
+          });
+        };
+>>>>>>> 2a6480e01a2c13c15ec5b68357d5c6c1528355f4
 } //end mixed function

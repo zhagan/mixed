@@ -65,7 +65,7 @@
 
 <!-- list of users -->
   <div class="sidebar">
-
+    <h6 style="color: white; text-align: center; border-top: solid; border-bottom: solid; background-color:#328680">Collaborators</h6>
     <!-- contributor social profile card -->
     <div class="chip">
       <img src="./assets/images/avatar.png" alt="Person" width="96" height="96">
@@ -108,12 +108,13 @@
 <!-- BEGIN "WHAT'S PLAYING AREA"-->
 <div class="main_body">
   <!-- =============================================== -->
-  <!-- HEADLINE for Available Playlists cards-->
-<div class="playlistCards">
-  <div class="leftColumn">
-      <div class="leftColumnHeader">
-      <!-- <img src="./assets/images/Step-1.png" alt="Step 1"> -->
-      <h3>Step <span class="circleFont">1</span>&nbsp;Select a Playlist</h3>
+ <!-- HEADLINE for Available Playlists cards-->
+   <div class="playlist_section" id="createPlaylist" style="padding: 10px">
+    <h3 style="text-align: center;"><span class="step">Step<span class="stepNumber">1</span></span>:Create New Playlist</h3>
+      <form id="inputSet">
+        <input class="w3-input w3-border w3-round" type="text" id="inputST" placeholder="Name your Playlist">
+        <button class="w3-btn w3-round-large w3-teal" type="button" id="createSet">Add Playlist!</button>
+      </form>
     </div>
   <!-- <div class="flex"> -->
     <div id="loadPlaylist">
@@ -121,29 +122,40 @@
     </div>
   <!-- </div> -->
 
+<<<<<<< HEAD
   </div>
 
 </div>
 
  <!-- =============================================== -->
 <!-- Flow area 1b: right column of section: CREATE A NEW PLAYLIST FORM-->
+=======
 
-  <div class="playlist_section" id="createPlaylist">
-      <form id="inputSet">
-        <img src="./assets/images/or.png" alt="Or">
-        <h3>Create New Playlist</h3>
-        <input class="w3-input w3-border w3-round" type="text" id="inputST">
-        <button class="w3-btn w3-round-large w3-teal" type="button" id="createSet">Add Playlist!</button>
-      </form>
-    </div>
+<div class="playlistCards">
+ <div class="leftColumn">
+     <div class="leftColumnHeader">
+      <h3 style="text-align: center;"><span class="step">Ne<span class="stepNumber">x</span>t</span>:Select Your Playlist</h3>
+   </div>
+ <!-- <div class="flex"> -->
+   <div id="loadPlaylist">
+             <!-- PLAYLIST CARDS display area -->
+   </div>
+
+
+ </div>
+
+</div>
+>>>>>>> 2a6480e01a2c13c15ec5b68357d5c6c1528355f4
+
   </div>
+
   <!-- END main-body -->
 <!-- =============================================== -->
 <!-- BEGIN SELECT SONG AREA -->
 <section class="songArea">
   <div class="currentMusicList">
 
-      <h3>My MIXED Playlist:&nbsp;<span id="playlistTitle"></span></h3>
+      <h3>My <b style="color:#ef4e3d">MIXED</b> Playlist:&nbsp;<span id="playlistTitle"></span></h3>
       <table class="table" id="currentPlaylist">
 
         <tr>
@@ -159,6 +171,11 @@
     <!-- #noPlaylist line 59 & 125 -->
     <div class="playlist_section">
 
+<<<<<<< HEAD
+=======
+          <!-- ZACK CREATE??<p>Playlists Available:
+          </p> -->
+>>>>>>> 2a6480e01a2c13c15ec5b68357d5c6c1528355f4
     </div>
 
   </div>
@@ -168,17 +185,20 @@
   <div class="main_library">
 
 
+
+
     <!-- insert Library page-->
 
       <div id="headline">
-        <img src="./assets/images/Step-2.png" alt="Step 2">
-        <h3>Add your own song to the Playlist!</h3>
+         <a href="#sectionThree" id="backButton"><- Back to Step 1</a><br>
+        <h3 style="text-align: center;"><span class="step">Step<span class="stepNumber">2</span></span>:Create New Playlist</h3>
       </div>
 
     <!-- Step 1 Pick a song -->
     <div class="library">
 
       <div class="stepSeach">
+        <h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;Search for your song!</h4>
         <div class="search-container">
           <form action="  ">
           <input type="text" placeholder="Search.." name="search" id="inputST1">
@@ -204,6 +224,7 @@
   </div>
 </section>
     <div  class="selectAddArea" id="stepTwoContainer">
+
 
       <!-- Step 2 Add song to Playlist -->
     <h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;Add your song!</h4>
