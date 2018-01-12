@@ -205,7 +205,7 @@ nav a:active{
   display: grid;
   color: #000000;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: "playlistCards playlist_section";
+  grid-template-areas: "playlist_section playlistCards";
   margin: 0 20px;
 }
 
@@ -225,7 +225,6 @@ nav a:active{
 }
 .leftColumn {
   background-color: #c0dfd9;
-  border-right: .5px solid #ffffff;
   display: grid;
   grid-template-rows: 2% 1fr;
   grid-template-areas: "headline"
@@ -237,12 +236,12 @@ nav a:active{
     margin:13px 0 0 0;
   color: #404048;
     }
-/* .leftColumnHeader img {
+ .leftColumnHeader img {
   width: 40%;
   height: auto;
   margin-top: 15px;
   vertical-align: middle;
-} */
+} 
 .leftColumnHeader {
   display: flex;
   align-content: flex-start;
@@ -290,84 +289,23 @@ span.circleFont {
   height: 40px;
   width: 40px;
 }
-/* ============================================== */
-/*.playlistCards{
-  padding: 15px;
-  border-right: .5px solid #f2f2f2;
-  display:  table;
-}
 
-.leftColumn {
-  grid-area: playlistCards;
-  display: block;
-  width: 60%;
-}
-.leftColumn h3 {
-  float:left;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size:1.75em;
-	margin:12px 0 0 0;
-  padding-left: 20px;
-  color: #404048;
-	}
-
-.leftColumn img {
-  display: inline-block;
-  max-width: 29%;
-  margin-top: 15px;
-  float: left;
-  vertical-align: middle;
-}
-
-#loadPlaylist {
-  margin-top: 10px;
-  float: left;
-  max-width: 90%;
-}*/
-/* loadPlaylist children should be  */
-
-/*.card {
-  font-family: 'Source Sans Pro', sans-serif;
-  width: 100%;
-  padding: 3px 1px;
-  margin-bottom: 3px;
-  border-radius: 5px;
-  border: .5px solid #404048;
-  background-color: #d3d3d3;
-  text-align: center;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  cursor: pointer;
-}
-
-/* .card img {
-  border-radius: 5px 5px;
-  margin-top: 5%;
-  height: 80px;
-  width: 80px;
-} */
-
-/*.card:hover {
+#playlistTitle {
   font-weight: bold;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
-  transition: 0.3s;
-}*/
-/* ============================================== */
-
-
-/* inside grid layout CREATE PLAYLIST */
-/* .playlist_section > h3 {
-    grid-area: headline;
+  font-size: 25px;
 }
 
-.playlist_section > .playlistGrid {
-    grid-area: playlist;
-} */
+#playlistTitle:hover {
+  text-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+}
+
 .playlist_section {
   /* display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: "headline"
                        "playlist"; */
    /* margin: 0 20px; */
+   border-right: .5px solid #ffffff;
   grid-area: playlist_section;
   padding: 15px;
 }
@@ -390,10 +328,18 @@ span.circleFont {
 
 #inputST {
   margin-top: 10px;
+  color:  #43434f;
+}
+
+#inputSet {
+  text-align: center;
+  margin: auto;
+  width: 50%
 }
 
 #createSet {
   margin-top: 3px;
+  float: right;
 }
 /* =========================== */
 .songArea {
@@ -543,6 +489,7 @@ span.circleFont {
     margin-left: 17px;
     color: #404048;
   	}
+
 
 .library {
   padding: 15px;
@@ -945,6 +892,18 @@ begin grid layout for the playlist CARDS */
   position: sticky;
   bottom: 0px;
   left: 0px;
+}
+
+span.step {
+  background-color: #43434f;
+  color: white;
+  border-radius: 20px;
+  padding: 2px;
+}
+
+span.stepNumber {
+  /*background-color: #ef4e3d;*/
+  color: #ef4e3d;
 }
 /*=============================
   default grid set up -> mobile
