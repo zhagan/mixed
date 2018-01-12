@@ -905,6 +905,10 @@ span.stepNumber {
   /*background-color: #ef4e3d;*/
   color: #ef4e3d;
 }
+
+#backButton {
+  float: left;
+}
 /*=============================
   default grid set up -> mobile
 ===============================*/
