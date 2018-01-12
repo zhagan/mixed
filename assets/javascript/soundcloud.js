@@ -407,8 +407,6 @@ function mixed(){
         var address = getAddress(position.coords.latitude, position.coords.longitude);
       //  console.log(address);
 
-<<<<<<< HEAD
-=======
         address.then(function(value) {
             console.log(value.city);
             console.log(value.state);
@@ -451,5 +449,4 @@ function mixed(){
             request.send();
           });
         };
->>>>>>> 2a6480e01a2c13c15ec5b68357d5c6c1528355f4
 } //end mixed function
