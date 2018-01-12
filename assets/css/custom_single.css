@@ -115,6 +115,8 @@ body h3 {
   background-color: #dcf5f0;
 }
 
+
+
 /* TOP bar - logo, nav */
 #logo-header {
   grid-area: headerImage;
@@ -202,6 +204,9 @@ nav a:active{
   text-align: center;
 }
 
+
+
+
 /* CONTAINS PLAYLIST CARD DISPLAY AND CREATE PLAYLIST FORM*/
 .main_body > .playlistCards {
   grid-area: playlistCards;
@@ -215,9 +220,10 @@ nav a:active{
   display: grid;
   color: #000000;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: "playlistCards playlist_section";
+  grid-template-areas: "playlist_section playlistCards";
   margin: 0 20px;
 }
+
 /* left side playlist area =============================== */
 .playlistCards{
   grid-area: playlistCards;
@@ -226,9 +232,8 @@ nav a:active{
 }
 
 .leftColumn h3 {
-	grid-area: headline;
+    grid-area: headline;
 }
-
 .leftColumn img{
   grid-area: headline;
 }
@@ -236,34 +241,27 @@ nav a:active{
 .flex {
   grid-area: playlist;
 }
-
 .leftColumn {
-
   background-color: #dcf5f0;
   background: linear-gradient(to bottom right, #dcf5f0, #d1ece7);
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-
- 
   display: grid;
   grid-template-rows: 2% 1fr;
   grid-template-areas: "headline"
                        "playlist";
-
 }
 .leftColumnHeader h3 {
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size:1.75em;
-	margin:13px 0 0 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size:1.75em;
+    margin:13px 0 0 0;
   color: #404048;
-	}
-
-/* .leftColumnHeader img {
+    }
+ .leftColumnHeader img {
   width: 40%;
   height: auto;
   margin-top: 15px;
   vertical-align: middle;
-} */
-
+} 
 .leftColumnHeader {
   display: flex;
   align-content: flex-start;
@@ -279,14 +277,12 @@ nav a:active{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   max-width: 90%;
   margin-top: 10px;
-
   background-color: white;  
   margin-left: 15px;
   margin-bottom: 15px;
      -moz-box-shadow:    inset 0 0 1px #000000;
    -webkit-box-shadow: inset 0 0 1px #000000;
    box-shadow:         inset 0 0 1px #000000;
-
 }
 
 .card {
@@ -313,7 +309,6 @@ nav a:active{
         background: linear-gradient(#2b2b2b , #5e5e5e);
 
 }
-
 .card:hover {
   box-shadow:0 0px 0px 0 rgba(0,0,0,0),0 0px 0px 0 rgba(0,0,0,0);
   background: linear-gradient(#5e5e5e, #2b2b2b);
@@ -335,8 +330,8 @@ nav a:active{
 
 span.circleFont {
   font-family: 'Source Sans Pro', sans-serif;
-	font-size:1.25em;
-  line-height:28px;
+    font-size:1.25em;
+  line-height:30px;
   display:inline-block;
   border-radius: 50%;
   border-color: #EB5342;
@@ -364,10 +359,9 @@ span.circleFont {
   grid-template-areas: "headline"
                        "playlist"; */
    /* margin: 0 20px; */
-  border-right: 3px solid #ffffff;
+   border-right: 3px solid #ffffff;
   grid-area: playlist_section;
   padding: 15px;
-
 }
 .playlist_section h3 {
   float:left;
@@ -385,11 +379,7 @@ span.circleFont {
   float: left;
   vertical-align: middle;
 }
-#inputSet{
-  margin: auto;
-  width: 50%;
 
-}
 #inputST {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -407,12 +397,10 @@ span.circleFont {
   text-align: center;
   margin: auto;
   width: 50%
-
 }
 
 #createSet {
   margin-top: 3px;
-
   float: right;
   background: linear-gradient(#3a9992, #43aca4);
   box-shadow:
@@ -431,7 +419,6 @@ span.circleFont {
         inset 0 0 0px 0 rgba(0,0,0,.4),
         inset 0 0 0px 0px rgba(0,0,0,.05),
         0px 0px 0px 0 rgba(0,0,0,.25);
-
 }
 /* =========================== */
 .songArea {
@@ -442,8 +429,6 @@ span.circleFont {
 /* TABLE for Playlist, Section 1 ==========================================*/
 .currentMusicList > h3 {
   grid-area: h3;
-  color: #45ABA3;
-  font-weight: bold;
 }
 
 .currentMusicList > .table {
@@ -523,6 +508,29 @@ span.circleFont {
 /* ===================================================  */
 
 
+/* Album cover art Section 1
+.player > .img {
+  grid-area: img;
+}
+
+.player > .details {
+  grid-area: dtls;
+}
+
+.player {
+  display: grid;
+  color: #000000;
+  grid-template-columns: 250px 1fr;
+  grid-template-areas: "img dtls";
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.player .details {
+  text-align: left;
+  padding: 20px;
+}
 /* ================================================== */
 .main_library > #headline {
     grid-area: headline;
@@ -561,6 +569,7 @@ span.circleFont {
     color: #404048;
   	}
 
+
 .library {
   padding: 15px;
   margin: 0 15px;
@@ -570,8 +579,68 @@ span.circleFont {
 
     display: inline-block;
 }
+
 /* end grid layout set up */
 
+/* HIDE CSS b/c Zack js buttons should override this layout!!
+begin grid layout for the playlist CARDS */
+/* .playlistGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: "card card card card"
+                       "card card card card"
+                       "card card card card"
+                       "card card card card";
+  justify-content: space-evenly;
+  grid-gap: 10px;
+  padding: 20px;
+} */
+/* end CARD grid set up */
+/* .playlist_section h3 {
+  float:left;
+	font-family: 'Source Sans Pro', sans-serif;
+  font-size:1.75em;
+  width:100%;
+	position:relative;
+	padding:0 0 0 70px;
+	margin:50px 0 10px 0;
+  color: #EB5342;
+} */
+
+
+/* .cardContainer {
+    padding: 5px;
+    text-align: center;
+}
+
+.cardContainer p {
+  color: #f2f2f2;
+  font-family: 'Source Sans Pro', sans-serif;
+	font-size:.75em;
+
+}
+
+.cardContainer h4 {
+  color: #404048;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bold;
+	font-size:1em;
+} */
+
+/* h3 span {
+  display:inline-block;
+	padding: 5px 0 0 0;
+	width:48px;
+	height:48px;
+	background:#000;
+	color:#f4f4f6;
+	border-radius: 50%;
+	text-align:center;
+	position:absolute;
+	left:0px;
+	top:-7px;
+} */
 /* LIBRARY search ================================================= */
 .stepSeach {
   display: contents;
@@ -696,8 +765,6 @@ span.circleFont {
 
 #addSongForm input {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 20px;
 }
 
@@ -746,6 +813,103 @@ span.circleFont {
     border-radius: 50%;
 }
 
+/* album cover slideshow ==================================================*/
+/* .clear { clear: both; }
+
+.stage {
+  margin-top: 15px;
+  background-color: none;
+  float: left;
+  height: 330px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  z-index: 10;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+}
+
+.cbImage {
+  width: 200px;
+  height: 268px;
+  float: left;
+  margin: 25px 0px 25px 0px;
+  color: white;
+  box-shadow: 0px 5px 10px 0px #D6D6D6;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.cbImage img {
+  width: 100%;
+  height: 100%;
+}
+
+.inactiveLeft {
+  -webkit-transform: perspective(500px) rotateY(60deg);
+  -O-transform: perspective(500px) rotateY(60deg);
+  transform: perspective(500px) rotateY(60deg);
+  -webkit-transition: all .5s ease-out;
+  -O-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+  box-shadow: 12px 0px 20px 0px #d6d6d6;
+}
+
+.inactiveRight {
+  -webkit-transform: perspective(500px) rotateY(-60deg);
+  -O-transform: perspective(500px) rotateY(-60deg);
+  transform: perspective(500px) rotateY(-60deg);
+  -webkit-transition: all .5s ease-out;
+  -O-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+  box-shadow: -12px 0px 20px 0px #d6d6d6;
+}
+
+.active {
+  z-index: 100;
+  -webkit-transform: perspective(500px) rotateY(0deg);
+  -O-transform: perspective(500px) rotateY(0deg);
+  transform: perspective(500px) rotateY(0deg);
+  -webkit-transition: all .5s ease-out;
+  -O-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+.controls {
+  width: 50%;
+  margin: auto;
+}
+
+.cbcontrol {
+  font-size: 80%;
+  float: left;
+  color: white;
+  margin-top: 1px;
+  margin-bottom: 10px;
+  width: 28%;
+  height: 15px;
+  text-align: center;
+  background-color: #c0dfd9;
+  border: .5px solid #e5f2ef;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#cbControlRight {
+  float: right;
+  margin-right: 20%;
+}
+#cbControlLeft {
+  float: left;
+  margin-left: 20%;
+}
+.cbcontrol:hover { cursor: pointer; } */
 
 /* Container goes with album cover block */
 .container {
@@ -864,7 +1028,6 @@ span.stepNumber {
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
-
 /*=============================
   default grid set up -> mobile
 ===============================*/
