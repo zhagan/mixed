@@ -312,7 +312,7 @@ function mixed(){
 
                   var trackObj = $(this).clone();
 
-                  var ySong =  $('#yourSong').attr("id","selectedSong");
+                  var ySong =  $('#yourSong');
                   ySong.empty().append(trackObj);
                   ySong.attr('uri', scURI).attr('title', title).attr('imgURL', imgURL).attr('artist', artist).attr('trackURL',trackURL);
 
