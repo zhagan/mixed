@@ -89,7 +89,7 @@ function mixed(){
           var playlistNames = snapshot.val().name;
           var plLocSpan = $('<span id="locationSpan">');
 
-          var playlistLocation = " - " + snapshot.val().location
+          var playlistLocation = "<br>" + snapshot.val().location
           plLocSpan.append(playlistLocation)
           var plDiv = $(`<div class="card" value="${plIt}">`).append(playlistNames).append(plLocSpan).appendTo($('#loadPlaylist'));
           plIt++;

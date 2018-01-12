@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link href="https://fonts.googleapis.com/css?family=Schoolbell" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
     <!-- link to firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 
@@ -58,7 +60,7 @@
 
   <section class="aboutSection">
     <div id="about">
-      <h6>My <span style="color:#EB5342;">Mixed</span> Tape: Collaborate with Friends to make a Playlist!</h6>
+      <h6>My <span style="color:#EB5342;">Mixed</span> Tape:<span style= "font-family: 'Architects Daughter', cursive;"> Collaborate with Friends to make a Playlist!</span></h6>
     </div>
   </section>
 <!-- END header -->
@@ -110,9 +112,9 @@
   <!-- =============================================== -->
  <!-- HEADLINE for Available Playlists cards-->
    <div class="playlist_section" id="createPlaylist" style="padding: 10px">
-    <h3 style="text-align: center;"><span class="step">Step<span class="stepNumber">1</span></span>:Create New Playlist</h3>
+    <h3 style="text-align: center;"><span class="step">Step<span class="stepNumber">1</span></span>:<span id="action">Create</span> New <span style="color: #ef4e3d">MIXED</span> Tape</h3>
       <form id="inputSet">
-        <input class="w3-input w3-border w3-round" type="text" id="inputST" placeholder="Name your Playlist">
+          <input class="w3-input w3-border w3-round" type="text" id="inputST" placeholder="Name your Playlist">
         <button class="w3-btn w3-round-large w3-teal" type="button" id="createSet">Add Playlist!</button>
       </form>
     </div>
@@ -134,7 +136,7 @@
 <div class="playlistCards">
  <div class="leftColumn">
      <div class="leftColumnHeader">
-      <h3 style="text-align: center;"><span class="step">Ne<span class="stepNumber">x</span>t</span>:Select Your Playlist</h3>
+      <h3 style="text-align: center;"><span class="step">Ne<span class="stepNumber">x</span>t</span>:<span id="action">Select</span> Your <span style="color: #ef4e3d">MIXED</span> Tape</h3>
    </div>
  <!-- <div class="flex"> -->
    <div id="loadPlaylist">
@@ -191,14 +193,14 @@
 
       <div id="headline">
          <a href="#sectionThree" id="backButton"><- Back to Step 1</a><br>
-        <h3 style="text-align: center;"><span class="step">Step<span class="stepNumber">2</span></span>:Create New Playlist</h3>
+        <h3 style="text-align: center;"><span class="step">Step<span class="stepNumber">2</span></span>:<span id="action">Add</span> a Song!</h3>
       </div>
 
     <!-- Step 1 Pick a song -->
     <div class="library">
 
       <div class="stepSeach">
-        <h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;Search for your song!</h4>
+        <h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;<span id="action">Search</span> for your song!</h4>
         <div class="search-container">
           <form action="  ">
           <input type="text" placeholder="Search.." name="search" id="inputST1">
@@ -227,7 +229,7 @@
 
 
       <!-- Step 2 Add song to Playlist -->
-    <h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;Add your song!</h4>
+    <h4><i class="fa fa-chevron-right" style="color: #45ABA3;" aria-hidden="true"></i>&nbsp;&nbsp;<span id="action">Add</span> your song!</h4>
 
     <div class="stepTwo">
 
