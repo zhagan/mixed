@@ -2,10 +2,24 @@
 /* CSS Grid */
 body > .header {
   grid-area: header;
+
 }
 
 body > .aboutSection {
   grid-area: about;
+   /* The image used */
+    background-image: url("../images/top_banner.jpg");
+
+    /* Set a specific height */
+    height: 50px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    box-shadow: 0px 10px rgba(0,0,0,0.5);
 }
 
 body > .sidebar {
@@ -86,18 +100,19 @@ body h3 {
 /* GRID main section 1 */
 .main > .sectionOne {
   grid-area: content2;
-  background-color: #c0dfd9;
+  background-color: #dcf5f0;
+  background: linear-gradient(#dcf5f0, white);
 }
 
 /* GRID main section 2 */
 .main > .sectionTwo {
   grid-area: content2;
-  background-color: #c0dfd9;
+  background-color: #dcf5f0;
 }
 
 .main > .selectSongArea {
   grid-area: content2;
-  background-color: #c0dfd9;
+  background-color: #dcf5f0;
 }
 
 
@@ -212,19 +227,24 @@ nav a:active{
 /* left side playlist area =============================== */
 .playlistCards{
   grid-area: playlistCards;
-  background-color: #c0dfd9;
+  background-color: #dcf5f0;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
+
 .leftColumn h3 {
     grid-area: headline;
 }
 .leftColumn img{
   grid-area: headline;
 }
+
 .flex {
   grid-area: playlist;
 }
 .leftColumn {
-  background-color: #c0dfd9;
+  background-color: #dcf5f0;
+  background: linear-gradient(to bottom right, #dcf5f0, #d1ece7);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   display: grid;
   grid-template-rows: 2% 1fr;
   grid-template-areas: "headline"
@@ -253,12 +273,20 @@ nav a:active{
   border-radius: 15px;
   padding: 2%;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   max-width: 90%;
   margin-top: 10px;
+  background-color: white;  
+  margin-left: 15px;
+  margin-bottom: 15px;
+     -moz-box-shadow:    inset 0 0 1px #000000;
+   -webkit-box-shadow: inset 0 0 1px #000000;
+   box-shadow:         inset 0 0 1px #000000;
 }
+
 .card {
-  font-family: 'Source Sans Pro', sans-serif;
+/*  font-family: 'Source Sans Pro', sans-serif;
   width: 30%;
   padding: 3px 1px;
   margin-bottom: 3px;
@@ -268,13 +296,38 @@ nav a:active{
   background-color: #d3d3d3;
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  cursor: pointer;
+  cursor: pointer;*/
+        width:30%;
+        padding: 3px 1px;
+        text-align: center;
+        float:left;
+        margin:10px;
+        background: #43434f;
+        color: white;
+        box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        border-radius: 10px;
+        background: linear-gradient(#2b2b2b , #5e5e5e);
+
 }
 .card:hover {
-  font-weight: bold;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
-  transition: 0.3s;
+  box-shadow:0 0px 0px 0 rgba(0,0,0,0),0 0px 0px 0 rgba(0,0,0,0);
+  background: linear-gradient(#5e5e5e, #2b2b2b);
 }
+
+.card:active {
+  box-shadow:0 0px 0px 0 rgba(0,0,0,0),0 0px 0px 0 rgba(0,0,0,0);
+  border-color: #ef4e3d;
+}
+
+#locationSpan {
+  background-color: #fbc963;
+  color: #43434f;
+  padding: 1px;
+  font-family: 'Schoolbell', cursive;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
 span.circleFont {
   font-family: 'Source Sans Pro', sans-serif;
     font-size:1.25em;
@@ -292,7 +345,8 @@ span.circleFont {
 
 #playlistTitle {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 30px;
+  font-family: 'Architects Daughter', cursive;
 }
 
 #playlistTitle:hover {
@@ -305,7 +359,7 @@ span.circleFont {
   grid-template-areas: "headline"
                        "playlist"; */
    /* margin: 0 20px; */
-   border-right: .5px solid #ffffff;
+   border-right: 3px solid #ffffff;
   grid-area: playlist_section;
   padding: 15px;
 }
@@ -328,7 +382,15 @@ span.circleFont {
 
 #inputST {
   margin-top: 10px;
+  margin-bottom: 10px;
   color:  #43434f;
+}
+
+#inputST:hover,
+#inputST:focus {
+  margin-top: 10px;
+  color:  #43434f;
+  box-shadow:0 2px 2px 0 rgba(0,0,0,0.1),0 2px 2px 0 rgba(0,0,0,0.1); 
 }
 
 #inputSet {
@@ -340,6 +402,23 @@ span.circleFont {
 #createSet {
   margin-top: 3px;
   float: right;
+  background: linear-gradient(#3a9992, #43aca4);
+  box-shadow:
+        inset 0 0 2px 0 rgba(255,255,255,.4),
+        inset 0 0 3px 0 rgba(0,0,0,.4),
+        inset 0 0 3px 5px rgba(0,0,0,.05),
+        2px 2px 4px 0 rgba(0,0,0,.25);
+}
+
+#createSet:hover {
+  margin-top: 3px;
+  float: right;
+  background: linear-gradient(#43aca4, #3a9992);
+  box-shadow:
+        inset 0 0 0px 0 rgba(255,255,255,.4),
+        inset 0 0 0px 0 rgba(0,0,0,.4),
+        inset 0 0 0px 0px rgba(0,0,0,.05),
+        0px 0px 0px 0 rgba(0,0,0,.25);
 }
 /* =========================== */
 .songArea {
@@ -400,7 +479,7 @@ span.circleFont {
 
 .table th {
   background-color: #EB5342;
-  color: #404048;
+  color: white;
 }
 
 .table tr th:first-child {
@@ -577,7 +656,9 @@ begin grid layout for the playlist CARDS */
 .stepSeach .search-container {
   overflow: hidden;
   display: block;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%:
 }
 
 .stepSeach input[type=text] {
@@ -897,8 +978,8 @@ begin grid layout for the playlist CARDS */
 span.step {
   background-color: #43434f;
   color: white;
-  border-radius: 20px;
-  padding: 2px;
+  border-radius: 15px;
+  padding: 3px;
 }
 
 span.stepNumber {
@@ -908,6 +989,44 @@ span.stepNumber {
 
 #backButton {
   float: left;
+}
+
+#yourSong {
+  font-weight: bold;
+}
+
+#selectMixedTape {
+  font-family: 'Schoolbell', cursive;
+  font-size: 20px;
+}
+
+#action {
+  -webkit-text-stroke-width: 0.5px;
+   -webkit-text-stroke-color: #43434f;
+   font-weight: bold;
+   font-size: 30px;
+   font-family: 'Architects Daughter', cursive;
+}
+
+.chip:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 0.5s; 
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite; 
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 /*=============================
   default grid set up -> mobile
