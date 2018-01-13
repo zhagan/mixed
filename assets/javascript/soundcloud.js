@@ -25,23 +25,13 @@ function mixed(){
 
     //hide main sections until user logs in
     $('.mainSection').hide();
-    //run the login function
-    //login();
 
-      //hide the library selection
+    //hide the library selection
     $('.mainLibrary').hide();
     $('.selectSongArea').hide(); //hide select and search song area
     $('.selectAddArea').hide();
-    $(".libraryShow").click( function(event){
-      // console.log("library clicked");
-        $('.mainPlaylist').hide();
-        $('.mainLibrary').show();
-      });
-    $(".playlistShow").click( function(event){
-        $('.mainLibrary').hide();
-        $('.mainPlaylist').show();
 
-    });
+
 
     //add playlist function probably need to check if the name exists already...
     var plNameGlobal;
@@ -73,7 +63,7 @@ function mixed(){
         songs: ""
       });
       plChangedListener  = plRefGlobal.child('songs');
-      //the listener for when the playlist is ammended
+      // make a song counter
       var songCounter = 0;
 
     } //end add playlist
@@ -98,12 +88,14 @@ function mixed(){
       // THIS IS THE CALLBACK FOR SLECTING A PLAYLIST
 
       plDiv.on('click', function(event){
-        //if playlist buttom clicked load playlist
+              //if playlist buttom clicked load playlist
 
               plLoc = $(this).attr('value');
-
+              //get the playlist name and set the global variable
               plNameGlobal = snapshot.val().name;
+
               playlist = [];
+              //set up playlist display divs
               $('#playlistTitle').text(plNameGlobal);
               $('#noPlaylist').hide();//hide playlist
               $('.main_body').hide();
@@ -111,29 +103,22 @@ function mixed(){
               $('.selectAddArea').show();
               $('#currentPlaylist tr').not(':first').empty();
               //reset where we are looking in the db
-            //  var playlistRef = dbRef.child('playlists');
-
               plRefGlobal =  dbRef.child('playlists').child(plNameGlobal);
-
-              //this is what is called when a user adds a song to existing playlist
-
-
-
-
+                  //this is called when a song is removed from the playlist
                   plRefGlobal.child('songs').once('child_removed', function(snapshot) {
-                      console.log("child removed");
-                      //plDiv.trigger('click');
-                      songCounter--;
-                      //plDiv.off();
+                      songCounter--; //decrement song counter
                   });
-
+                  //this is what is called when a user adds a song to existing playlist
                   plRefGlobal.child('songs').on('value', function(snapshot) {
-                    var songCounter = 0;
+
+                    songCounter = 0;
+                    //set playlist to empty
                     playlist = [];
                     $('#currentPlaylist tr').not(':first').empty();
-                    console.log("child "+JSON.stringify(snapshot));
-                      // //create soundcloud widget
+                    //console.log("child "+JSON.stringify(snapshot));
+
                     snapshot.forEach( function(snapshot){
+                      //get the info about the song
                       var scURI = snapshot.val().scURI;
                       var artist = snapshot.val().artist;
                       var imgURL = snapshot.val().imgURL;
@@ -142,25 +127,23 @@ function mixed(){
                       var comment = snapshot.val().comment;
                       var addedBy = snapshot.val().addedBy;
                       var songDbRef = snapshot.ref.path.n[snapshot.ref.path.n.length-1];
-
+                      //make a track object
                       var track = {
-                          title:title,
-                          trackURL:trackURL,
-                          imgURL:imgURL,
-                          artist:artist,
-                          scURI:scURI,
-                          comment:comment,
-                          addedBy:addedBy,
-                          songDbRef: songDbRef
-                      };
-                      // console.log("scURI "+scURI);
-
+                            title:title,
+                            trackURL:trackURL,
+                            imgURL:imgURL,
+                            artist:artist,
+                            scURI:scURI,
+                            comment:comment,
+                            addedBy:addedBy,
+                            songDbRef: songDbRef
+                        };
+                      //Actually add the song the playlist
                       addSongToPL(track, songCounter);
                       songCounter++; //increment the song counter
                     });
 
                     });
-
 
               });
 
@@ -169,20 +152,20 @@ function mixed(){
     dbPlRef.once('value').then(function(data) {
         // console.log(JSON.stringify(data));
         playlistsOldStorage = data;
-
-
     });
 
-//this function creates a soundcloud widget for a song
+    //this function creates a soundcloud widget for a song
     function addSongToPL(track, index){
           // console.log(JSON.stringify(track) + "track object");
           playlist.push(track);
           var playlistRow = '';
-
-          playlistRow += '<tr ><td>'+(index+1)+ '</td><td>' + track.title + '</td><td>' + track.artist + '</td><td>' + track.addedBy
-          + '</td><td>' + track.comment + '</td><td>' + '<div><button type="submit" id="deleteSong" data-dbref="'+track.songDbRef+'"><i class="fa fa-trash"></i></button><button id="playSong" data-pos="'+index+'"data-uri="' + track.scURI + '" data-url="'+track.trackURL
-          +'" data-img="'+track.imgURL+'" data-title="'+track.title+'" data-artist="'+track.artist+'"><i class="fa fa-play"></i></button></div>'+ '</td></tr>';
-
+          playlistRow += '<tr ><td>'+(index+1)+ '</td><td>' + track.title + '</td><td>'
+          + track.artist + '</td><td>' + track.addedBy + '</td><td>' + track.comment
+          + '</td><td>' + '<div><button type="submit" id="deleteSong" data-dbref="'
+          +track.songDbRef+'"><i class="fa fa-trash"></i></button><button id="playSong" data-pos="'
+          +index+'"data-uri="' + track.scURI + '" data-url="' + track.trackURL +'" data-img="'
+          +track.imgURL+'" data-title="'+track.title+'" data-artist="'+track.artist
+          +'"><i class="fa fa-play"></i></button></div>'+ '</td></tr>';
           $('#currentPlaylist tr').last().after(playlistRow);
 
       }
@@ -257,23 +240,27 @@ function mixed(){
 
     function searchSC(sTerm){
            if (sTerm == "") {
-          console.log("User cancelled the prompt.");
-      } else {
+             $('#error').empty();
+             $('#error').append("<p>Please enter valid Search Term</p>");
+          //console.log("User cancelled the prompt.");
+              } else {
+                $('#error').empty();
           //this is where we search if the user has completed a field
-        SC.get('/tracks', {
-            q: searchTerm
-//             genre: genre,
-//             user: artist
-          }).then(function(tracks) {
-            // console.log(tracks);
-
-
+                SC.get('/tracks', {
+                    q: searchTerm
+                    //genre: genre,
+                    //user: artist
+                  }).then(function(tracks) {
+                     console.log(tracks);
+                if(tracks.length == 0){
+                   console.log("no tracks");
+                    $('#error').empty();
+                    $('#error').append("<p>No Matches Please Try again</p>");
+                  }
+        //
         $('#songTable tr').not(':first').remove();
 
-
-
         for(var i = 0; i<tracks.length; i++){
-          // console.log("ping");
 
           var trackName =  tracks[i].title;
           var artistName = tracks[i].user.permalink;
@@ -283,8 +270,11 @@ function mixed(){
 
           // create row for each song
           var songRow = '';
-
-          songRow += '<tr data-uri="' + trackURI + '" data-url="'+trackURL+'" data-img="'+imgURL+'" data-title="'+trackName+'" data-artist="'+artistName+'"><td>' + trackName + '</td><td>' + artistName + '</td></tr>';
+          //format the song table row
+          songRow += '<tr data-uri="' + trackURI + '" data-url="'+trackURL
+          +'" data-img="'+imgURL+'" data-title="'+trackName+'" data-artist="'
+          +artistName+'"><td>' + trackName + '</td><td>' + artistName
+          + '</td></tr>';
           $('#songTable tr').first().after(songRow);
 
          } // end of for loop
@@ -298,23 +288,24 @@ function mixed(){
     var trackEntry = $('#trackEntry');
     var playlistContainer = $('#playlist');
     var songContainer = $('.songRow');
-    // songContainer.click(function() {
+    //when a song is click in the search result table
     tracksContainer.on('click','tr', function(){
-
-                  $('.main_library').hide();
-                  var scURI = $(this).data('uri');
-                  var title = $(this).data('title');
-
-                  var artist = $(this).data('artist');
-                  var trackURL = $(this).data('url');
-
-                  var imgURL = $(this).data('img');
-
-                  var trackObj = $(this).clone();
-
-                  var ySong =  $('#yourSong');
-                  ySong.empty().append(trackObj);
-                  ySong.attr('uri', scURI).attr('title', title).attr('imgURL', imgURL).attr('artist', artist).attr('trackURL',trackURL);
+            //go to add song and hide the search results
+            $('.main_library').hide(500);
+             //get the song info
+            var scURI = $(this).data('uri');
+            var title = $(this).data('title');
+            var artist = $(this).data('artist');
+            var trackURL = $(this).data('url');
+            var imgURL = $(this).data('img');
+            //clone the div
+            var trackObj = $(this).clone();
+            var ySong =  $('#yourSong');
+            //empty the yourSong div and put result in
+            ySong.empty().append(trackObj);
+            //give the yourSong div all the info needed to add to playlist
+            ySong.attr('uri', scURI).attr('title', title).attr('imgURL', imgURL)
+            .attr('artist', artist).attr('trackURL',trackURL);
 
         });
 
@@ -343,10 +334,15 @@ function mixed(){
       var songDbRef = $(this).data('dbref');
       plRefGlobal.child('songs').child(songDbRef).remove();
 
-
-
     });
-
+    var player = $('<iframe>', {
+         src: 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/10502040&amp',
+         id:  'songWidget',
+         frameborder: 0,
+         scrolling: 'no',
+         width: '100%',
+         id: 'player'
+    }).appendTo($('.main')).hide();
     //when a song in the playlist is clicked
     $('#currentPlaylist').on('click', '#playSong', function(event){
     //$('#playSong').click( function(event){
@@ -382,30 +378,31 @@ function mixed(){
       });
 
     });
-
-    var player = $('<iframe>', {
-         src: 'https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/10502040&amp',
-         id:  'songWidget',
-         frameborder: 0,
-         scrolling: 'no',
-         width: '100%',
-         id: 'player'
-    }).appendTo($('.main')).hide();
-
+    //show playlist div this is when the header link is clicked
     $('#playlistShow').click(function(event){
-
       $('.main_body').show();
     });
-
+    //show song serach div
     $('#selectSongShow').click(function(event){
-
       $('.main_library').show();
     });
-
+    $(".libraryShow").click( function(event){
+      // console.log("library clicked");
+        $('.mainPlaylist').hide();
+        $('.mainLibrary').show();
+      });
+    $(".playlistShow").click( function(event){
+        $('.mainLibrary').hide();
+        $('.mainPlaylist').show();
+    });
+    //go back to the playlist select div
+    $('#backButton').click(function(event){
+      $('.main_body').show();
+    });
      // geolocation info
       navigator.geolocation.getCurrentPosition(function(position) {
         var address = getAddress(position.coords.latitude, position.coords.longitude);
-      //  console.log(address);
+        //console.log(address);
 
         address.then(function(value) {
             console.log(value.city);
@@ -417,6 +414,16 @@ function mixed(){
         // console.log(address._result.formatted_address);
       });
 
+      //This is the required Ajax request, I have replaced it with a promise request.
+      // function getAddress(latdegrees, londegrees) {
+      //      var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latdegrees + "," + londegrees + "&sensor=true";
+      //      $.getJSON(url,function (data, textStatus) {
+      //             var streetaddress=data.results[0].formatted_address;
+      //            return streetaddress;
+      //        });
+      //       }
+
+      //Reverse resolve google maps promise request
         function getAddress (latitude, longitude) {
         return new Promise(function (resolve, reject) {
             var request = new XMLHttpRequest();
@@ -432,7 +439,7 @@ function mixed(){
                         var data = JSON.parse(request.responseText);
                         var address = data.results[0];
                       //  resolve(address);
-                        console.log(address);
+                        //console.log(address);
                         var city = address.address_components[4].short_name;
                         var state = address.address_components[6].short_name;
                         plLocation = {

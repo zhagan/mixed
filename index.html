@@ -34,7 +34,7 @@
             <ul>
 
               <li class="current">
-                    <a href="#one">What's Playing</a>
+                    <a href="#currentPlaylist">What's Playing</a>
                 </li>
                 <li>
                     <span>|</span>
@@ -42,7 +42,7 @@
 
                 <li class="current">
 
-                  <a href="#two" id="selectSongShow"><i class="fab fa-soundcloud"></i>&nbsp;&nbsp;&nbsp;Select Song</a>
+                  <a href="#selectSongArea" id="selectSongShow"><i class="fab fa-soundcloud"></i>&nbsp;&nbsp;&nbsp;Select Song</a>
                 </li>
                 <li>
                     <span>|</span>
@@ -166,7 +166,7 @@
   </div>
 </section>
 <!-- =================================================== -->
-<section class="selectSongArea">
+<section class="selectSongArea" id="selectSongArea">
   <div class="main_library">
 
 
@@ -175,8 +175,10 @@
     <!-- insert Library page-->
 
       <div id="headline">
-         <a href="#sectionThree" id="backButton"><- Back to Step 1</a><br>
+         <a href="#" id="backButton"><- Back to Step 1</a><br>
         <h3 style="text-align: center;"><span class="step">Step<span class="stepNumber">2</span></span>:<span id="action">Add</span> a Song!</h3>
+        <div id="error">
+        </div>
       </div>
 
     <!-- Step 1 Pick a song -->

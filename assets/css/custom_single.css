@@ -11,7 +11,7 @@ body > .aboutSection {
     background-image: url("../images/top_banner.jpg");
 
     /* Set a specific height */
-    height: 50px; 
+    height: 50px;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -261,7 +261,7 @@ nav a:active{
   height: auto;
   margin-top: 15px;
   vertical-align: middle;
-} 
+}
 .leftColumnHeader {
   display: flex;
   align-content: flex-start;
@@ -277,7 +277,7 @@ nav a:active{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   max-width: 90%;
   margin-top: 10px;
-  background-color: white;  
+  background-color: white;
   margin-left: 15px;
   margin-bottom: 15px;
      -moz-box-shadow:    inset 0 0 1px #000000;
@@ -390,7 +390,7 @@ span.circleFont {
 #inputST:focus {
   margin-top: 10px;
   color:  #43434f;
-  box-shadow:0 2px 2px 0 rgba(0,0,0,0.1),0 2px 2px 0 rgba(0,0,0,0.1); 
+  box-shadow:0 2px 2px 0 rgba(0,0,0,0.1),0 2px 2px 0 rgba(0,0,0,0.1);
 }
 
 #inputSet {
@@ -991,7 +991,12 @@ span.stepNumber {
   float: left;
 }
 
-
+#error {
+  font-family: 'Schoolbell', cursive;
+  font-size: 20px;
+  text-align: center;
+  color: red;
+}
 
 #selectMixedTape {
   font-family: 'Schoolbell', cursive;
@@ -1008,9 +1013,9 @@ span.stepNumber {
 
 .chip:hover {
     /* Start the shake animation and make the animation last for 0.5 seconds */
-    animation: shake 0.5s; 
+    animation: shake 0.5s;
     /* When the animation is finished, start again */
-    animation-iteration-count: infinite; 
+    animation-iteration-count: infinite;
 }
 
 @keyframes shake {
